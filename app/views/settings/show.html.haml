@@ -1,0 +1,13 @@
+#subheader.span-24.last
+  %h1 My settings
+
+%h2 Facebook integration
+- if current_user.facebook_access_token
+  %p Your account is linked to facebook, congratulations!
+
+  %h2 Facebook page id :
+  = form_for current_user, :url => settings_path do |f|
+    = f.text_field :facebook_page_id
+    = f.submit "Save"
+- else
+  %p= link_to "Link your account to facebook", MiniFB.oauth_url(FacebookConfig.application_id, facebook_session_settings_url, :scope=>MiniFB.scopes.join(","))

@@ -1,0 +1,8 @@
+#content.span-24.last
+
+  %h2 Editing campaign '#{@campaign.name}'
+
+  = form_for @campaign do |f|
+    = render f
+    %p
+      = f.submit "Update"

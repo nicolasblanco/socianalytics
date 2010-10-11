@@ -1,0 +1,7 @@
+#content.span-24.last
+  %h2 Adding a new campaign
+
+  = form_for @campaign do |f|
+    = render f
+    %p
+      = f.submit "Create"

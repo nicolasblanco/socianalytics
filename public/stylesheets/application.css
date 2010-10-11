@@ -1,0 +1,153 @@
+body {
+    font-family: "lucida grande",sans-serif;
+    color: #727272;
+    background-image: url("../images/pages_bg.png");
+    background-repeat: repeat-x;
+    font-weight:lighter;
+}
+
+body.home.connected-false {
+    background-image: url("../images/background.png");
+}
+
+h1, h2, h3 {
+    color: #727272;
+}
+
+a {
+  color: #6eb4cc;
+}
+
+/*Header*/
+#header {
+    height: 120px;
+}
+
+#logo {
+    margin-top:25px;
+}
+
+#header span.current a {
+    color: #45707f;
+}
+
+#menu {
+    text-align: right;
+    margin-top: 68px;
+    font-size: 140%;
+}
+#menu span {
+    margin-left: 10px;
+}
+
+#menu a {
+    text-decoration: none;
+}
+
+/*END Header*/
+
+/*SubHeader*/
+#subheader {
+    height: 82px;
+}
+
+#subheader h1 {
+    margin-top: 25px;
+}
+/*END SubHeader*/
+
+/*Content*/
+#content {
+    margin-top:40px;
+}
+
+#content h1 {
+    font-size:200%;
+}
+
+#baseline {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#baseline h2 {
+    color: white;
+}
+
+#macbook {
+    position: relative;
+    top: -70px;
+}
+
+#sign_in {
+    position: relative;
+    top: -380px;
+}
+
+#footer {
+    position: relative;
+    top: -300px;
+    left: 900px;
+    width: 100px;
+    height: 100px;
+}
+
+.tweet .row .rank {
+    background: url("../images/podium.png") no-repeat;
+    height:60px;
+}
+
+.tweet .row .rank .content {
+    color: white;
+    font-size: 200%;
+    position:relative;
+    left: 10px;
+    top: 4px;
+
+}
+
+.tweet .row .text {
+    background: url("../images/quote.png") no-repeat;
+    height:60px;
+    padding-top: 10px;
+}
+
+.tweet .number, .tweet_details .number {
+    font-size: 180%;
+    padding-top: 10px;
+}
+
+.head .text .date {
+    padding-left: 40px;
+}
+
+/*END Content*/
+
+ul#nav {
+  margin-top: 25px;
+  margin-right: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul#nav li {
+  float: left;
+  font-size: 3em;
+  line-height: 1;
+  margin-bottom: 0.5em;
+  font-weight: normal;
+}
+
+ul#nav li.current {
+  font-weight: bold;
+}
+
+ul#nav > li > a {
+  text-decoration: none;
+  color: #727272;
+}
+
+ul#nav > li > a:hover {
+  text-decoration: underline;
+}

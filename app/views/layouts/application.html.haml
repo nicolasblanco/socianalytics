@@ -1,0 +1,45 @@
+!!!
+%html{ html_attrs }
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %title Qualifeed
+    //%meta{:content => "Just another Web site", :name => "description"}
+    //%meta{:content => "the, tags, web sites, clean, dark, useful, etc...", :name => "keywords"}
+    = stylesheet_link_tag %w(screen application)
+    = javascript_include_tag %w(jquery-1.4.2.min highcharts rails)
+    = csrf_meta_tag
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-273181-15']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+  %body{:class => "#{controller.controller_name} connected-#{user_signed_in?.to_s}"}
+    .container
+      / begin header
+      #header.span-24.last
+        / begin logo
+        #logo.span-10
+          = link_to(image_tag("logo.png"), root_path)
+        / end logo
+        / begin menu
+        #menu.span-14.last
+          - if user_signed_in?
+            %span{:class => (controller.controller_name == "home" && "current")}= link_to "Top tweet", root_path
+            %span{:class => (controller.controller_name == "campaigns" && "current")}= link_to "Campaigns", campaigns_path
+            %span{:class => (controller.controller_name == "dashboards" && controller.action_name == "followers" && "current")}= link_to "My followers", followers_dashboard_path
+            %span{:class => (controller.controller_name == "settings" && "current")}= link_to "My settings", settings_path
+
+            %span= link_to "Logout", destroy_user_session_path
+        / end menu
+      / end header
+      .span-24.last
+        - if flash[:notice]
+          %p{ :style => "color: green;"}
+            = flash[:notice]
+        
+        = yield

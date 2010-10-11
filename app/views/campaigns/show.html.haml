@@ -1,0 +1,34 @@
+#content.span-24.last
+
+  %h2 Showing campaign '#{@campaign.name}'
+
+  %h3 Start tracker
+
+  %p
+    Insert this tracker on your landing page
+
+  %p
+    %pre
+      :escaped
+        <script type='text/javascript'>
+        //<![CDATA[
+        var qfRef = encoreURIComponent(document.referrer);
+        var qfJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gfJsHost + "qualifeed.com/campaigns/#{@campaign.id}/tracker.js?qfState=start&qfRef="+qfRef+"' type='text/javascript'%3E%3C/script%3E"));
+        //]]>
+        </script>
+
+
+  %h3 Finish tracker
+
+  %p
+    Insert this tracker on your payment page
+
+  %p
+    %pre
+      :escaped
+        <script type='text/javascript'>
+        //<![CDATA[
+        var qfJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gfJsHost + "qualifeed.com/campaigns/#{@campaign.id}/tracker.js?qfState=finish' type='text/javascript'%3E%3C/script%3E"));
+        //]]>

@@ -1,0 +1,56 @@
+#subheader.span-24.last
+  %h1 @#{current_user.twitter_handle}
+
+#content.span-24.last
+  %h1 My top tweets!
+  
+  #container.highcharts-container{:style => "height:410px; width: 800px; margin: 0 auto; clear:both"}
+    
+:javascript
+  var chart;
+  $(document).ready(function() {
+    chart = new Highcharts.Chart({
+      chart: {
+         renderTo: 'container',
+         defaultSeriesType: 'line',
+         marginRight: 130,
+         marginBottom: 25
+      },
+      title: {
+         text: 'Evolution of your followers',
+         x: -20 //center
+      },
+      subtitle: {
+         text: 'Last 24 hours',
+         x: -20
+      },
+      xAxis: {
+        categories: #{ array_or_string_for_javascript(current_user.user_stats.all.map{|x| x.created_at.strftime("%H:%M")}) }
+      },
+      yAxis: {
+         title: {
+            text: 'Number of followers or fans'
+         },
+         plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+         }]
+      },
+      tooltip: {
+         formatter: function() {
+                   return '<b>'+ this.series.name +'</b><br/>'+
+               'à ' + this.x +' '+ this.y + ' followers';
+         }
+      },
+      legend: {
+         layout: 'vertical',
+         align: 'right',
+         verticalAlign: 'top',
+         x: -10,
+         y: 100,
+         borderWidth: 0
+      },
+      series: #{format_stats_for_js}
+    });
+  });

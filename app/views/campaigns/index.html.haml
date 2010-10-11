@@ -1,0 +1,14 @@
+#subheader.span-24.last
+  %h1 My campaigns
+#content.span-24.last
+  %p
+    = link_to "Create a new campaign", new_campaign_path
+
+  %ul
+    - for campaign in @campaigns
+      %li
+        = link_to campaign.name, campaign_path(campaign)
+        \-
+        = link_to "edit", edit_campaign_path(campaign)
+        \-
+        = link_to "delete", campaign_path(campaign), :method => :delete, :confirm => "Are you sure?"
