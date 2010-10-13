@@ -5,7 +5,7 @@
     %title Socianalytics - Dashboard
     
     = stylesheet_link_tag "dashboard/style"
-    = javascript_include_tag "jquery/jquery"
+    = javascript_include_tag "jquery.min", "highcharts"
     = javascript_include_tag "dashboard"
     
   %body
@@ -14,7 +14,7 @@
         .header
           .top
             %h1.logo
-              %img{:alt => "Company", :src => "images/dashboard/logo.png"}/
+              %img{:alt => "Company", :src => "/images/dashboard/logo.png"}/
             .property_selector
               %span Select a View
               .menu
@@ -53,22 +53,22 @@
               %li.current
                 %a{:href => ""}
                   %span
-                    %img{:alt => "icon", :src => "images/dashboard/icon-home.gif"}>/
+                    %img{:alt => "icon", :src => "/images/dashboard/icon-home.gif"}>/
                     Button 1
               %li
                 %a{:href => ""}
                   %span
-                    %img{:alt => "icon", :src => "images/dashboard/icon-ticket.gif"}>/
+                    %img{:alt => "icon", :src => "/images/dashboard/icon-ticket.gif"}>/
                     Button 2
               %li
                 %a{:href => ""}
                   %span
-                    %img{:alt => "icon", :src => "images/dashboard/icon-people.gif"}>/
+                    %img{:alt => "icon", :src => "/images/dashboard/icon-people.gif"}>/
                     Button 3
               %li.last
                 %a{:href => ""}
                   %span
-                    %img{:alt => "icon", :src => "images/dashboard/icon-settings.gif"}>/
+                    %img{:alt => "icon", :src => "/images/dashboard/icon-settings.gif"}>/
                     Button 4
           / div.navbar end
         / div.header end
@@ -97,7 +97,7 @@
             
     .footer
       .footerlogo
-        %img{:alt => "Company Name", :src => "images/dashboard/logo.png"}/
+        %img{:alt => "Company Name", :src => "/images/dashboard/logo.png"}/
       #footer-links
         %ul
           %li
