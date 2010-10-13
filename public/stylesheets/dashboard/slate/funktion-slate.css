@@ -1,0 +1,130 @@
+body{
+    background: #305263;
+}
+a {
+    color: #2288a2;
+}
+
+.wrapper {
+    background: #e4eef2 url(../../images/slate/bg-top.png) repeat-x 0 0;
+}
+.header {
+    background: #e4eef2 url(../../images/slate/bg-top.png) repeat-x 0 0;
+}
+
+.page-head {
+    background: #8bbac9;
+}
+
+.page-head h3 a {
+    color:#305263;
+}
+
+.data-table tr.even td {
+    background-color:#e9f2f4;
+}
+
+.container {
+    background: #fff url(../../images/slate/bg-sidebar.jpg) repeat-y right top;
+}
+
+.property_selector span {
+    background: url(../../images/slate/bg-property-selector.png) no-repeat 0 0;
+}
+
+.search-box {
+    background: #b5d3dc url(../../images/slate/bg-seach-box.png) repeat-x 0 0;
+}
+
+.button {
+    background: url(../../images/slate/bg-sidebar-button.png);
+    color: #2288a2;
+}
+.property-nav dt {
+    border-bottom: solid 1px #aed9d8;
+}
+
+.footer {
+    background: url(../../images/slate/bg-footer.jpg) repeat-x 0 0;
+}
+
+.search-box .input-box {
+    background: url(../../images/slate/bg-search-input.jpg) no-repeat 8px 0;
+}
+
+.account_box a {
+    background: url(../../images/slate/bg-nav-r.png) no-repeat right 0;
+    color:#fff;
+}
+.account_box a span {
+    background: url(../../images/slate/bg-nav-l.png) no-repeat left 0;
+    color:#fff;
+}
+
+.searchButton {
+    background: url(../../images/slate/btn-search.png) no-repeat;
+    width: 46px;
+    height: 30px;
+    border:0px;
+}
+
+.login-box .head {
+    background-image: url(../../images/slate/bg-login-head.png);
+}
+.login-box .foot {
+    background-image: url(../../images/slate/bg-login-foot.png);
+}
+.login-box .body {
+    background-image: url(../../images/slate/bg-login-body.png);
+}
+
+.loginButton {
+    background: url(../../images/slate/btn-login.gif) no-repeat;
+    width: 142px;
+    height: 50px;
+    border:0px;
+}
+
+.pageLogin{
+	background-color: #e4eef2;
+}
+
+.saveButton {
+    background: url(../../images/slate/btn-save.png) no-repeat;
+    width: 86px;
+    height: 40px;
+    border:0px;
+}
+
+.listby li.expanded-view a {
+    background: url(../../images/slate/icon-expanded.png) no-repeat 0 0;
+}
+.listby li.list-view a {
+    background:url(../../images/slate/icon-list.png) no-repeat 0 0;
+}
+.listby a {
+    color:#2288a2;
+}
+.listby li.current a, .listby li a:hover {
+    color:#fff;
+    background-position: 0 -22px;
+}
+
+.commonLink a {
+    display: inline-block;
+    background: url(../../images/slate/bg-button-r.png) no-repeat right top;
+    padding-right: 12px;
+    cursor:pointer;
+    text-decoration: none;
+}
+.commonLink a span {
+    display: inline-block;
+    background: url(../../images/slate/bg-button-l.png) no-repeat left top;
+    padding-left: 12px;
+    padding-top: 5px;
+    height: 24px;
+}
+
+.page-head {
+    background: #8bbac9 url(../../images/slate/bg-page-head.png) repeat-x 0 0;
+}

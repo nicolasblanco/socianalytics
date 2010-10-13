@@ -1,0 +1,116 @@
+!!!
+%html{ html_attrs }
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %title Socianalytics - Dashboard
+    
+    = stylesheet_link_tag "dashboard/style"
+    = javascript_include_tag "jquery/jquery"
+    = javascript_include_tag "dashboard"
+    
+  %body
+    .wrapper
+      .outline
+        .header
+          .top
+            %h1.logo
+              %img{:alt => "Company", :src => "images/dashboard/logo.png"}/
+            .property_selector
+              %span Select a View
+              .menu
+                %ul
+                  %li
+                    %a{:href => "view1.html"} View 1
+                  %li
+                    %a{:href => "view2.html"} View 2
+                  %li
+                    %a{:href => "view3.html"} View 3
+                  %li
+                    %a{:href => "view4.html"} View 4
+                  %li
+                    %a{:href => "people.html"} People View
+                  %li
+                    %a{:href => "view-SubNav.html"} View with sub nav
+                  %li
+                    %a{:href => "single.html"} Single Page
+                  %li
+                    %a{:href => "formelements.html"} Form Elements
+                  %li
+                    %a{:href => "buttons.html"} Buttons
+            / #progerty_selector end
+            .account_box
+              Logged in as UserName
+              %a{:href => "profile.html"}
+                %span My Profile
+              %a{:href => "login.html"}
+                %span Logout
+              %a{:href => "#"}
+                %span Help
+          / div.top end
+          .navbar
+            %h1 Socianalytics
+            %ul
+              %li.current
+                %a{:href => ""}
+                  %span
+                    %img{:alt => "icon", :src => "images/dashboard/icon-home.gif"}>/
+                    Button 1
+              %li
+                %a{:href => ""}
+                  %span
+                    %img{:alt => "icon", :src => "images/dashboard/icon-ticket.gif"}>/
+                    Button 2
+              %li
+                %a{:href => ""}
+                  %span
+                    %img{:alt => "icon", :src => "images/dashboard/icon-people.gif"}>/
+                    Button 3
+              %li.last
+                %a{:href => ""}
+                  %span
+                    %img{:alt => "icon", :src => "images/dashboard/icon-settings.gif"}>/
+                    Button 4
+          / div.navbar end
+        / div.header end
+        .container
+          .sidebar
+            .search-box
+              %form{:action => ""}
+                .input-box
+                  %input.search-input{:name => "", :type => "text"}/
+                %input.searchButton{:name => "", :type => "submit", :value => " "}/
+            .property-nav
+              %button.button Create
+              %dl
+                %dt Sub List
+                %dd
+                  %ul
+                    %li
+                      %a{:href => "#"} Sub List 1
+                    %li
+                      %a{:href => "#"} Sub List 2
+                    %li
+                      %a{:href => "#"} Sub List 3
+          / div.sidebar end
+          .main
+            = yield
+            
+    .footer
+      .footerlogo
+        %img{:alt => "Company Name", :src => "images/dashboard/logo.png"}/
+      #footer-links
+        %ul
+          %li
+            %a{:href => "#"} Help &amp; Support
+          %li
+            %a{:href => "#"} Link
+          %li
+            %a{:href => "#"} Forums
+          %li
+            %a{:href => "#"} Privacy Policy
+          %li
+            %a{:href => "#"} Terms of Use
+        %p
+          Company Name is a Service of
+          %a{:href => "#"} Company Name
+    / div.footer end

@@ -1,100 +1,105 @@
-#subheader.span-24.last
-  %h1 @#{current_user.twitter_handle}
--#container.highcharts-container{:style => "height:410px; width: 800px; margin: 0 auto; clear:both"}
-#content.span-24.last
-  %h2 My top tweets!
-- @tweets = current_user.tweets.all.desc("raw.created_at").reject{|tw| tw.tweet_stats.empty? }
-- @tweets += current_user.tweets.all.desc("raw.created_at") - @tweets
-- @index = 0
-- for tweet in @tweets.flatten[0..9].sort_by{ |tw| tw.tweet_stats.any? ? tw.tweet_stats.last.number_of_subfollowers+tw.raw["user"]["followers_count"].to_i : 0}.reverse
-  - if tweet.raw.present?
-    #tweets
-      .tweet.span-24.last
-        .head.span-24.last
-          .text.prepend-2.span-14
-            - date = tweet.raw["created_at"].is_a?(String) ? Time.parse(tweet.raw["created_at"]) : tweet.raw["created_at"]
-            .date= l date, :format => :long
-          .people.span-3
-            People
-          .actions.span-5.last
-            Qualifeed score
-        .row.span-24.last
-          .rank.span-2
-            .content= (@index += 1).to_s.rjust(2, '0')
-          .text.span-14
-            .prepend-1.span-12.append-1.last
-              = raw(tweet.raw["text"])
-          .people.span-3
-            .number= (tweet.tweet_stats.any? ? tweet.tweet_stats.last.number_of_subfollowers : 0) + tweet.raw["user"]["followers_count"].to_i
-          .actions.span-4
-            .number= tweet.score
-          .more.span-1.last
-            <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="qualifeed" data-text="My Qualifeed score is #{tweet.score}. My tweets are very efficient" data-url="http://qualifeed.com">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-            = link_to_function image_tag("more.png"), "$('##{'tweet_details_'+tweet.id.to_s}').toggle()"
-      .tweet_details.span-24.last{:id => ['tweet_details', tweet.id], :style => "display:none"}
-        .retweets.prepend-10.span-3
-          Retweets
-          .number= tweet.raw["retweet_count"] || 0 #FIXME : why it's sometime nil?
-        .followers.span-3
-          Followers
-          .number= tweet.raw["user"]["followers_count"]
-        .replies.span-3
-          Replies
-          .number= tweet.number_of_replies
-        .clics.span-3.append-2.last
-          Clics
-          .number soon...
-    = image_tag "bottom_line.png"
-
-
-:javascript
-  var chart;
-  $(document).ready(function() {
-    chart = new Highcharts.Chart({
-      chart: {
-         renderTo: 'container',
-         defaultSeriesType: 'line',
-         marginRight: 130,
-         marginBottom: 25
-      },
-      title: {
-         text: 'Evolution of your followers',
-         x: -20 //center
-      },
-      subtitle: {
-         text: 'Last 24 hours',
-         x: -20
-      },
-      xAxis: {
-        categories: #{ array_or_string_for_javascript(current_user.user_stats.all.map{|x| x.created_at.strftime("%H:%M")}) }
-      },
-      yAxis: {
-         title: {
-            text: 'Number of followers'
-         },
-         plotLines: [{
-            value: 0,
-            width: 1,
-            color: '#808080'
-         }]
-      },
-      tooltip: {
-         formatter: function() {
-                   return '<b>'+ this.series.name +'</b><br/>'+
-               'à ' + this.x +' '+ this.y + ' followers';
-         }
-      },
-      legend: {
-         layout: 'vertical',
-         align: 'right',
-         verticalAlign: 'top',
-         x: -10,
-         y: 100,
-         borderWidth: 0
-      },
-      series: [{
-        name: '#{current_user.twitter_handle}',
-        data: [#{current_user.user_stats.map(&:number_of_followers).join(",")}]
-      }]
-    });
-  });
+.page-head
+  %h3 Recent Activity
+.page-content
+  .notes-detail
+    .close-note
+    .shadow
+      %div
+        %ul
+          %li
+            Message
+            %font{:color => "#f15a24"} 3 days
+            overdue
+            %a{:href => "#"} for ....
+          %li
+            Message
+            %a{:href => "#"} Info
+            open for
+            %font{:color => "#f15a24"} 3 days
+            %a{:href => "#"} for ....
+  .notes
+    %a{:href => "#"} 2 Notifications Closed
+  / div.notes-detail end
+  .data-table
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+      %thead
+        %tr
+          %th{:colspan => "3"} Listing 1
+      %tbody
+        %tr.first
+          %td.topic
+            %label.label.ticket Label 1
+            %a{:href => "#"} Label 1 Text
+          %td.author
+            Posted by
+            %a{:href => ""} User
+          %td.date
+            %strong TODAY
+        %tr.even
+          %td.topic
+            %label.label.comment Label 2
+            %a{:href => "#"} Label 2 Text
+          %td.author
+            Posted by
+            %a{:href => ""} User
+          %td.date
+            %strong TODAY
+        %tr
+          %td.topic
+            %label.label.person Label 3
+            %a{:href => "#"} Label 3 Text
+          %td.author
+            Posted by
+            %a{:href => ""} User
+          %td.date Tue Apr 28
+        %tr.even
+          %td.topic
+            %label.label.ticket Label 4
+            %a{:href => "#"} Label 4 Text
+          %td.author
+            Posted by
+            %a{:href => ""} User
+          %td.date Yesterday
+    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+      %thead
+        %tr
+          %th{:colspan => "3"} Listing 2
+      %tbody
+        %tr.first
+          %td.topic
+            %label.label.ticket Label 1
+            %a{:href => "#"} Label 1 Text
+          %td.author
+            Posted by
+            %a{:href => ""} User
+          %td.date
+            %strong TODAY
+        %tr.even
+          %td.topic
+            %label.label.comment Label 2
+            %a{:href => "#"} Label 2 Text
+          %td.author
+            Posted by
+            %a{:href => ""} User
+          %td.date
+            %strong TODAY
+        %tr
+          %td.topic
+            %label.label.person Label 3
+            %a{:href => "#"} Label 3 Text
+          %td.author
+            Posted by
+            %a{:href => ""} User
+          %td.date Tue Apr 28
+        %tr.even
+          %td.topic
+            %label.label.ticket Label 4
+            %a{:href => "#"} Label 4 Text
+          %td.author
+            Posted by
+            %a{:href => ""} User
+          %td.date Yesterday
+  / div.data-table end
+/ div.page-content end
+/ div.main end
+/ div.wrapper end, div.footer start

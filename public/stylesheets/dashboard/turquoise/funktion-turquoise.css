@@ -1,0 +1,130 @@
+body{
+    background: #135963;
+}
+a {
+    color: #0f8a8e;
+}
+
+.wrapper {
+    background: #e6f2f4 url(../../images/turquoise/bg-top.png) repeat-x 0 0;
+}
+.header {
+    background: #e6f2f4 url(../../images/turquoise/bg-top.png) repeat-x 0 0;
+}
+
+.page-head {
+    background: #5cb5c0;
+}
+
+.page-head h3 a {
+    color:#135963;
+}
+
+.data-table tr.even td {
+    background-color:#deedf0;
+}
+
+.container {
+    background: #fff url(../../images/turquoise/bg-sidebar.jpg) repeat-y right top;
+}
+
+.property_selector span {
+    background: url(../../images/turquoise/bg-property-selector.png) no-repeat 0 0;
+}
+
+.search-box {
+    background: #a5d4da url(../../images/turquoise/bg-seach-box.png) repeat-x 0 0;
+}
+
+.button {
+    background: url(../../images/turquoise/bg-sidebar-button.png);
+    color: #0f8a8e;
+}
+.property-nav dt {
+    border-bottom: solid 1px #aed9d8;
+}
+
+.footer {
+    background: url(../../images/turquoise/bg-footer.jpg) repeat-x 0 0;
+}
+
+.search-box .input-box {
+    background: url(../../images/turquoise/bg-search-input.jpg) no-repeat 8px 0;
+}
+
+.account_box a {
+    background: url(../../images/turquoise/bg-nav-r.png) no-repeat right 0;
+    color:#fff;
+}
+.account_box a span {
+    background: url(../../images/turquoise/bg-nav-l.png) no-repeat left 0;
+    color:#fff;
+}
+
+.searchButton {
+    background: url(../../images/turquoise/btn-search.png) no-repeat;
+    width: 46px;
+    height: 30px;
+    border:0px;
+}
+
+.login-box .head {
+    background-image: url(../../images/turquoise/bg-login-head.png);
+}
+.login-box .foot {
+    background-image: url(../../images/turquoise/bg-login-foot.png);
+}
+.login-box .body {
+    background-image: url(../../images/turquoise/bg-login-body.png);
+}
+
+.loginButton {
+    background: url(../../images/turquoise/btn-login.gif) no-repeat;
+    width: 142px;
+    height: 50px;
+    border:0px;
+}
+
+.pageLogin{
+	background-color: #e6f2f4;
+}
+
+.saveButton {
+    background: url(../../images/turquoise/btn-save.png) no-repeat;
+    width: 86px;
+    height: 40px;
+    border:0px;
+}
+
+.listby li.expanded-view a {
+    background: url(../../images/turquoise/icon-expanded.png) no-repeat 0 0;
+}
+.listby li.list-view a {
+    background:url(../../images/turquoise/icon-list.png) no-repeat 0 0;
+}
+.listby a {
+    color:#0f8a8e;
+}
+.listby li.current a, .listby li a:hover {
+    color:#fff;
+    background-position: 0 -22px;
+}
+
+.commonLink a {
+    display: inline-block;
+    background: url(../../images/turquoise/bg-button-r.png) no-repeat right top;
+    padding-right: 12px;
+    cursor:pointer;
+    text-decoration: none;
+}
+.commonLink a span {
+    display: inline-block;
+    background: url(../../images/turquoise/bg-button-l.png) no-repeat left top;
+    padding-left: 12px;
+    padding-top: 5px;
+    height: 24px;
+}
+
+.page-head {
+    background: #5cb5c0 url(../../images/turquoise/bg-page-head.png) repeat-x 0 0;
+}

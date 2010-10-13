@@ -1,0 +1,130 @@
+
+body{
+    background: #606060;
+}
+a {
+    color: #efefef;
+}
+
+.wrapper {
+    background: #ececec url(../../images/gunmetal/bg-top.png) repeat-x 0 0;
+}
+.header {
+    background: #ececec url(../../images/gunmetal/bg-top.png) repeat-x 0 0;
+}
+
+.page-head {
+    background: #a8a8a8;
+}
+
+.page-head h3 a {
+    color:#606060;
+}
+
+.data-table tr.even td {
+    background-color:#efefef;
+}
+
+.container {
+    background: #fff url(../../images/gunmetal/bg-sidebar.jpg) repeat-y right top;
+}
+
+.property_selector span {
+    background: url(../../images/gunmetal/bg-property-selector.png) no-repeat 0 0;
+}
+
+.search-box {
+    background: #c9c9c9 url(../../images/gunmetal/bg-seach-box.png) repeat-x 0 0;
+}
+
+.button {
+    background: url(../../images/gunmetal/bg-sidebar-button.png);
+    color: #606060;
+}
+.property-nav dt {
+    border-bottom: solid 1px #d1d1d1;
+}
+
+.footer {
+    background: url(../../images/gunmetal/bg-footer.jpg) repeat-x 0 0;
+}
+
+.search-box .input-box {
+    background: url(../../images/gunmetal/bg-search-input.jpg) no-repeat 8px 0;
+}
+
+.account_box a {
+    background: url(../../images/gunmetal/bg-nav-r.png) no-repeat right 0;
+    color:#fff;
+}
+.account_box a span {
+    background: url(../../images/gunmetal/bg-nav-l.png) no-repeat left 0;
+    color:#fff;
+}
+
+.searchButton {
+    background: url(../../images/gunmetal/btn-search.png) no-repeat;
+    width: 46px;
+    height: 30px;
+    border:0px;
+}
+
+.login-box .head {
+    background-image: url(../../images/gunmetal/bg-login-head.png);
+}
+.login-box .foot {
+    background-image: url(../../images/gunmetal/bg-login-foot.png);
+}
+.login-box .body {
+    background-image: url(../../images/gunmetal/bg-login-body.png);
+}
+
+.loginButton {
+    background: url(../../images/gunmetal/btn-login.gif) no-repeat;
+    width: 142px;
+    height: 50px;
+    border:0px;
+}
+.pageLogin{
+	background-color: #ececec;
+}
+
+.saveButton {
+    background: url(../../images/gunmetal/btn-save.png) no-repeat;
+    width: 86px;
+    height: 40px;
+    border:0px;
+}
+
+.listby li.expanded-view a {
+    background: url(../../images/gunmetal/icon-expanded.png) no-repeat 0 0;
+}
+.listby li.list-view a {
+    background:url(../../images/gunmetal/icon-list.png) no-repeat 0 0;
+}
+.listby a {
+    color:#606060;
+}
+.listby li.current a, .listby li a:hover {
+    color:#fff;
+    background-position: 0 -22px;
+}
+
+.commonLink a {
+    display: inline-block;
+    background: url(../../images/gunmetal/bg-button-r.png) no-repeat right top;
+    padding-right: 12px;
+    cursor:pointer;
+    text-decoration: none;
+}
+.commonLink a span {
+    display: inline-block;
+    background: url(../../images/gunmetal/bg-button-l.png) no-repeat left top;
+    padding-left: 12px;
+    padding-top: 5px;
+    height: 24px;
+}
+
+.page-head {
+    background: #a8a8a8 url(../../images/gunmetal/bg-page-head.png) repeat-x 0 0;
+}
