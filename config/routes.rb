@@ -1,4 +1,4 @@
-Transmediatic::Application.routes.draw do
+Socianalytics::Application.routes.draw do
       
   namespace :admin do
     resources :users do

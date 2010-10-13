@@ -2,13 +2,13 @@ class CampaignsController < LoggedController
 
   before_filter :load_campaign, :only => %w(edit update destroy show tracker)
 
-protected
+  protected
 
   def load_campaign
     @campaign = current_user.campaigns.find(params[:id])
   end
 
-public
+  public
 
   def index
     @campaigns = current_user.campaigns.desc(:created_at)

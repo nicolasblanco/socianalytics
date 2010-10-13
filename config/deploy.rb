@@ -42,3 +42,6 @@ namespace :shared_config do
     run "ln -nfs #{shared_path}/config/mongoid.yml #{release_path}/config/"
   end
 end
+
+        require 'config/boot'
+        require 'hoptoad_notifier/capistrano'

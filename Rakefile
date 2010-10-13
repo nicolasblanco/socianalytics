@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Transmediatic::Application.load_tasks
+Socianalytics::Application.load_tasks
