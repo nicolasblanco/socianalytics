@@ -1,45 +1,110 @@
 !!!
-%html{ html_attrs }
+%html{:dir => "ltr", :lang => "en-US"}
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
-    %title Qualifeed
-    //%meta{:content => "Just another Web site", :name => "description"}
-    //%meta{:content => "the, tags, web sites, clean, dark, useful, etc...", :name => "keywords"}
-    = stylesheet_link_tag %w(screen application)
-    = javascript_include_tag %w(jquery-1.4.2.min highcharts rails)
-    = csrf_meta_tag
-    :javascript
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-273181-15']);
-      _gaq.push(['_trackPageview']);
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %title Socianalytics
+    = stylesheet_link_tag "saas-common"
+    = stylesheet_link_tag "saas-default"
+    /[if IE]
+      <script src="javascripts/html5.js"></script>
+    %meta{:content => "noindex,nofollow", :name => "robots"}/
+    = javascript_include_tag "jquery/jquery.js", "easySlider1.5", "saas", "jquery.cookie.min", "saas.twitter"
 
-  %body{:class => "#{controller.controller_name} connected-#{user_signed_in?.to_s}"}
+  %body.home.page.page-template-page-home-php
+    .header
+      %div
+        .center
+          .topLinks
+            .menu-top-links-container
+              %ul#menu-top-links.menu
+                %li.menu-item
+                  %a{:href => "about.html"} About
+                %li.menu-item
+                  %a{:href => "blog.html"} Blog
+                %li.menu-item
+                  %a{:href => "help.html"} Help
+                %li.menu-item
+                  %a{:href => "contact-us.html"} Contact Us
+          %h1#logo
+            %a{:href => "home.html"}
+              %img{:alt => "SaaS Theme II", :src => "images/logo.png"}/
+          .nav
+            .menu-main-nav-container
+              %ul#menu-main-nav.menu
+                %li.menu-item
+                  %a{:href => "tour.html"}
+                    %span Tour
+                %li.menu-item
+                  %a{:href => "plans-pricing.html"}
+                    %span Plans & Pricing
+                %li.menu-item
+                  %a{:href => "sign-up.html"}
+                    %span Sign Up!
+    / div.header end
+    / div.container start
     .container
-      / begin header
-      #header.span-24.last
-        / begin logo
-        #logo.span-10
-          = link_to(image_tag("logo.png"), root_path)
-        / end logo
-        / begin menu
-        #menu.span-14.last
-          - if user_signed_in?
-            %span{:class => (controller.controller_name == "home" && "current")}= link_to "Top tweet", root_path
-            %span{:class => (controller.controller_name == "campaigns" && "current")}= link_to "Campaigns", campaigns_path
-            %span{:class => (controller.controller_name == "dashboards" && controller.action_name == "followers" && "current")}= link_to "My followers", followers_dashboard_path
-            %span{:class => (controller.controller_name == "settings" && "current")}= link_to "My settings", settings_path
-
-            %span= link_to "Logout", destroy_user_session_path
-        / end menu
-      / end header
-      .span-24.last
-        - if flash[:notice]
-          %p{ :style => "color: green;"}
-            = flash[:notice]
-        
-        = yield
+      = yield
+    / div.container end
+    / div.footer start
+    .footer
+      .prom
+        .center
+          %h2
+            %strong> Start doing stuff now!
+            Try us out free for 30 days.
+          .right
+            %a{:href => "sign-up.html"}
+              %img{:alt => "Sign Up!", :src => "images/btn-sign-up.png"}/
+      .links
+        .center
+          %div
+            %h3 Company
+            %p
+              %a{:href => "#"} Leadership
+              %br/
+              %a{:href => "#"} Partners
+              %br/
+              %a{:href => "#"} Investors
+          %div
+            %h3 Keep in Touch
+            %ul.social-links
+              %li
+                %a{:href => "http://twitter.com/themeteam"}
+                  %img{:alt => "", :src => "images/i_socialTwitter.png"}/
+              %li
+                %a{:href => "http://www.facebook.com/facebook-name"}
+                  %img{:alt => "", :src => "images/i_socialFacebook.png"}/
+              %li
+                %a{:href => "http://www.flickr.com/photos/flickr-name/"}
+                  %img{:alt => "", :src => "images/i_socialFlickr.png"}/
+              %li
+                %a{:href => "http://saas-wp-ii.worryfreelabs.com/feed/"}
+                  %img{:alt => "", :src => "images/i_socialRss.png"}/
+              %li
+                %a{:href => "http://linkedin.com/in/linkedin-name"}
+                  %img{:alt => "", :src => "images/i_socialLinkedin.png"}/
+              %li
+                %a{:href => "http://www.youtube.com/user/youtube-name"}
+                  %img{:alt => "", :src => "images/i_socialYoutube.png"}/
+          %div
+            %h3 Support
+            %p
+              %a{:href => "#"} Create a Support Ticket
+              %br/
+              %a{:href => "#"} FAQs
+              %br/
+              %a{:href => "#"} Forum
+              %br/
+              %a{:href => "#"} Live Chat
+          %div
+            %h3 SaaS Corp, Inc.
+            %p
+              544 Oenoke Ridge
+              %br/
+              New Canaan, CT 06480
+            %p
+              %a{:href => "http://gothemeteam.com/"} http://gothemeteam.com/
+              %br/
+              Toll Free: (800) 555-1212
+    / div.footer end
+    %script{:src => "javascripts/jquery/jquery.form.js?ver=2.02m", :type => "text/javascript"}

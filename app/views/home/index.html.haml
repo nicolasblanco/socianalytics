@@ -1,8 +1,74 @@
-#baseline.span-24
-  =image_tag "baseline.png"
-  %h2 Qualifeed allows you to track your popular tweets.
-  #macbook=image_tag "image.png"
-  #sign_in= link_to image_tag("signin.png"), user_sign_in_twitter_path
-  #footer
-    = link_to image_tag("twitter.png"), "http://twitter.com/qualifeed"
-    = link_to image_tag("facebook.png"), "http://www.facebook.com/qualifeed"
+.center
+  .tweets
+    %div
+      %strong.slainer68 TWITTER
+      %span.tweet
+        Loading tweet...
+        %a.view-more{:href => "#"} View More &raquo;
+  .proms
+    %div
+      .half.left
+        .intro
+          %h2 Our Web App is Amazing!
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pretium ante vel diam imperdiet pharetra. Aenean convallis, orci ut adipiscing congue, erat sem imperdiet ipsum, quis porta mauris odio sit amet urna.
+        .benefits
+          %ul
+            %li
+              .icon
+                %img{:alt => "Benefit Number One", :src => "images/i_book.png"}/
+              .content
+                %h3 Benefit Number One
+                %p Integer orci leo, condimentum ut pulvinar ac, placerat at libero. Nulla facilisi.
+            %li
+              .icon
+                %img{:alt => "Benefit Number Two", :src => "images/i_stock.png"}/
+              .content
+                %h3 Benefit Number Two
+                %p Integer orci leo, condimentum ut pulvinar ac, dfsadfsd placerat at libero. Nulla facilisi.
+            %li
+              .icon
+                %img{:alt => "Benefit Number Three", :src => "images/i_gear.png"}/
+              .content
+                %h3 Benefit Number Three
+                %p Integer orci leo, condimentum ut pulvinar ac, placerat at libero. Nulla facilisi.
+            %li
+              .icon
+                %img{:alt => "Benefit Number Four", :src => "images/i_star.png"}/
+              .content
+                %h3 Benefit Number Four
+                %p Integer orci leo, condimentum ut pulvinar ac, placerat at libero. Nulla facilisi.
+      .half.right
+        .slider
+          %div
+            %ul
+              %li
+                %img{:alt => "Title 1", :src => "images/screenshot.jpg"}/
+              %li
+                %img{:alt => "Title 2", :src => "images/screenshot.jpg"}/
+              %li
+                %img{:alt => "Title 3", :src => "images/screenshot.jpg"}/
+              %li
+                %img{:alt => "Title 4", :src => "images/screenshot.jpg"}/
+        .call-to-action.a-center
+          %a{:href => "sign-up.html"}
+            %img{:alt => "Free Trial!", :src => "images/btn-free-trial.png"}/
+  .features3
+    %ul
+      %li
+        .icon
+          %img{:alt => "What is our web app?", :src => "images/step_1.png"}/
+        .content
+          %h3 What is our web app?
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi placerat turpis sed ligula malesuada rhoncus. Nulla rhoncus elit eget lorem molestie at bibendum ante accumsan. Etiam in suscipit risus.
+      %li
+        .icon
+          %img{:alt => "How does our app work?", :src => "images/step_2.png"}/
+        .content
+          %h3 How does our app work?
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi placerat turpis sed ligula malesuada rhoncus. Nulla rhoncus elit eget lorem molestie at bibendum ante accumsan. Etiam in suscipit risus.
+      %li
+        .icon
+          %img{:alt => "Why do you need it?", :src => "images/step_3.png"}/
+        .content
+          %h3 Why do you need it?
+          %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi placerat turpis sed ligula malesuada rhoncus. Nulla rhoncus elit eget lorem molestie at bibendum ante accumsan. Etiam in suscipit risus.

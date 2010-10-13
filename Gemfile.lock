@@ -166,18 +166,18 @@ GEM
     rest-client (1.6.1)
       mime-types (>= 1.16)
     roauth (0.0.3)
-    rspec (2.0.0.beta.22)
-      rspec-core (= 2.0.0.beta.22)
-      rspec-expectations (= 2.0.0.beta.22)
-      rspec-mocks (= 2.0.0.beta.22)
-    rspec-core (2.0.0.beta.22)
-    rspec-expectations (2.0.0.beta.22)
+    rspec (2.0.0)
+      rspec-core (= 2.0.0)
+      rspec-expectations (= 2.0.0)
+      rspec-mocks (= 2.0.0)
+    rspec-core (2.0.0)
+    rspec-expectations (2.0.0)
       diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.0.beta.22)
-      rspec-core (= 2.0.0.beta.22)
-      rspec-expectations (= 2.0.0.beta.22)
-    rspec-rails (2.0.0.beta.22)
-      rspec (= 2.0.0.beta.22)
+    rspec-mocks (2.0.0)
+      rspec-core (= 2.0.0)
+      rspec-expectations (= 2.0.0)
+    rspec-rails (2.0.0)
+      rspec (= 2.0.0)
     ruby-debug (0.10.3)
       columnize (>= 0.1)
       ruby-debug-base (~> 0.10.3.0)
@@ -205,7 +205,7 @@ PLATFORMS
 
 DEPENDENCIES
   bitly
-  bson_ext (= 1.0.9)
+  bson_ext (~> 1.0.9)
   carrierwave
   devise
   devise-twitter!
@@ -218,17 +218,17 @@ DEPENDENCIES
   json
   mini_fb
   mini_magick
-  mongoid (= 2.0.0.beta.19)
+  mongoid (~> 2.0.0.beta.19)
   mongoid_slug
   mongrel
   rails (= 3.0.0)
   rails3-generators
   rcov (= 0.9.8)
-  rspec-rails (= 2.0.0.beta.22)
+  rspec-rails (= 2.0.0)
   ruby-debug
   ruby_parser
   state_machine
   state_machine-mongoid!
   twitter!
-  web-app-theme (>= 0.6.2)
-  will_paginate (= 3.0.pre2)
+  web-app-theme (~> 0.6.2)
+  will_paginate (~> 3.0)

@@ -1,6 +1,6 @@
 Twitter.configure do |config|
-  config.consumer_key = "jW4XqO7X4SpcsLBDq0v8Q"
-  config.consumer_secret = "7kk22UHviG3wrkc9hKVdcxxQ1eYBdX4E39oV9ogw"
+  config.consumer_key = "DZF1YQr3OKKNb8sCrRwQ"
+  config.consumer_secret = "3ci4zDPNvYYV84nxOCIWqI693ouDFGU6CKZHTiw5L0"
 end
 
 Devise::Twitter.setup do |config|
