@@ -8,11 +8,11 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: toptweet_development
+  database: socianalytics_development
 
 test:
   <<: *defaults
-  database: toptweet_test
+  database: socianalytics_test
 
 # set these environment variables on your prod server
 production:

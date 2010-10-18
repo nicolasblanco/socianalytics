@@ -17,6 +17,7 @@ class User
   references_many :tweets
   references_many :user_stats
   references_many :campaigns
+  references_many :short_urls
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable

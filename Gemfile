@@ -23,16 +23,24 @@ gem 'bitly'
 gem 'mini_fb'
 gem 'json'
 
-group :development do
-  gem 'mongrel'
-  gem 'ruby-debug'
+group :development, :test do
   gem 'rails3-generators'
   gem 'haml-rails'
   gem 'web-app-theme', '~> 0.6.2'
+  gem 'rcov', '0.9.8'
+  gem 'awesome_print', :require => 'ap'
+  gem "rspec-rails", "~> 2.0"
+  gem "factory_girl_rails"
+  gem "shoulda"
+  gem "ruby-debug"
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
+  gem 'cucumber'
+  gem 'launchy'
+  gem 'nokogiri'
+  gem 'webrat'
+  gem 'hpricot'
+  gem 'mongrel', '~> 1.1'
 end
 
-group :test do
-  gem 'rspec-rails', '2.0.0'
-  gem 'factory_girl_rails', '1.0'
-  gem 'rcov', '0.9.8'
-end
