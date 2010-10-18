@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.0'
 
 gem 'bson_ext', '1.0.9'
+gem 'bson', '1.0.9'
 gem 'mongoid', '2.0.0.beta.19'
 
 gem 'ruby_parser'
