@@ -62,6 +62,14 @@ GEM
     bson (1.0.9)
     bson_ext (1.0.9)
     builder (2.1.2)
+    capistrano (2.5.19)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.0.0)
+    capistrano-ext (1.2.1)
+      capistrano (>= 1.0.0)
     capybara (0.3.9)
       culerity (>= 0.2.4)
       mime-types (>= 1.16)
@@ -121,6 +129,7 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     hashie (0.4.0)
+    highline (1.6.1)
     hoptoad_notifier (2.3.10)
       activesupport
       builder
@@ -161,6 +170,13 @@ GEM
     multi_json (0.0.4)
     multi_xml (0.1.2)
     multipart-post (1.0.1)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.0.23)
+    net-ssh-gateway (1.0.1)
+      net-ssh (>= 1.99.1)
     nokogiri (1.4.3.1)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -238,6 +254,8 @@ DEPENDENCIES
   bitly
   bson (= 1.0.9)
   bson_ext (= 1.0.9)
+  capistrano
+  capistrano-ext
   capybara
   carrierwave
   compass

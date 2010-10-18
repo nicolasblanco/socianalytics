@@ -43,5 +43,6 @@ group :development, :test do
   gem 'webrat'
   gem 'hpricot'
   gem 'mongrel', '~> 1.1'
+  gem 'capistrano'
+  gem 'capistrano-ext'
 end
-
