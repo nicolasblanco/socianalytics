@@ -15,9 +15,9 @@ class ShortUrl
   validates_uniqueness_of :chunk
   
   def self.random_chunk
-    chunk = ""
-    (rand(4) + 1).times { chunk << valid_chars[rand(valid_chars.size)] }
-    chunk
+    "".tap do |chunk|
+      (rand(4) + 1).times { chunk << valid_chars[rand(valid_chars.size)] }
+    end
   end
   
   def add_request(request)
