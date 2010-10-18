@@ -1,0 +1,15 @@
+= form_for [:dashboard, @short_url] do |f|
+  %div{:style => "margin:0;padding:0"}
+  %h3.title Shorten one or more URLs :-)
+  %ul
+    = f.fields_for :redirections do |redirection_fields|
+      %li
+        = redirection_fields.label :full_url
+        .input-field
+          = redirection_fields.text_field :full_url, :class => "input-text"
+        = redirection_fields.label :description
+        .input-field  
+          = redirection_fields.text_field :description, :class => "input-text"
+
+  = f.submit "Shrink!"
+  

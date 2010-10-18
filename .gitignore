@@ -7,3 +7,4 @@ config/*yml
 *swo
 .DS_Store
 .idea
+.sass-cache

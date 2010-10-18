@@ -44,7 +44,7 @@ module Socianalytics
     # config.i18n.default_locale = :de
 
     # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions[:defaults] = %w(jquery jquery-ui rails application)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery.min jquery-ui rails application)
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

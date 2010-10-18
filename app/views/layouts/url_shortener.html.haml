@@ -1,0 +1,18 @@
+!!!
+%html{ html_attrs }
+  %head
+    %title ixi.me
+    = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
+    /[if IE]
+      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
+      
+  %body.bp.two-col
+    #container
+      #header
+        %h1 ixi.me
+      #content
+        = yield
+      #footer
+        Copyright (c) 2010 Nicolas Blanco & Laurent Matthieu Blanco.
+  

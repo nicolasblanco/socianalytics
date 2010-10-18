@@ -10,9 +10,11 @@ class ShortUrl
   referenced_in :user
   embeds_many :requests, :class_name => "ShortUrlRequest"
   embeds_many :redirections, :class_name => "ShortUrlRedirection"
+  accepts_nested_attributes_for :redirections, :reject_if => proc { |attributes| attributes['full_url'].blank? }
   
   before_validation :generate_chunk
   validates_uniqueness_of :chunk
+  validates_associated :redirections
   
   def self.random_chunk
     "".tap do |chunk|
@@ -22,6 +24,10 @@ class ShortUrl
   
   def add_request(request)
     requests.create(:referrer => request.referrer, :user_agent => request.user_agent)
+  end
+  
+  def url
+    "http://#{ShortUrlConfig.host}/#{chunk}"
   end
   
   protected

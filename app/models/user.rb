@@ -4,7 +4,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  after_create :compute_new_user_data
+  #after_create :compute_new_user_data
 
   field :admin, :type => Boolean, :default => false, :accessible => false
   field :twitter_handle
@@ -23,7 +23,7 @@ class User
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   # :registerable
   devise :database_authenticatable,
-         :recoverable, :rememberable, :trackable, :twitter_oauth
+         :recoverable, :rememberable, :trackable, :validatable, :registerable
          
   attr_accessible :email, :password, :password_confirmation, :remember_me, :facebook_page_id
   

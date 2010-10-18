@@ -59,10 +59,8 @@ Socianalytics::Application.routes.draw do
 
   # See how all your routes lay out with "rake routes"
   
-  resource :dashboard do
-    member do
-      get :followers
-    end
+  namespace :dashboard do
+    resources :short_urls
   end
   
   match "settings" => "settings#show"
@@ -77,12 +75,9 @@ Socianalytics::Application.routes.draw do
     get :tracker, :on => :member
   end
   
-  devise_for :user do
-    match '/user/sign_in/twitter' => Devise::Twitter::Rack::Signin
-    match '/user/connect/twitter' => Devise::Twitter::Rack::Connect
-  end
+  devise_for :user
   
-  match '/dashboard' => "dashboards#show", :as => :user_root
+  #match '/dashboard' => "dashboards#show", :as => :user_root
   
   match '/:chunk' => "short_urls#show", :constraints => ShortUrlConstraint.new
   

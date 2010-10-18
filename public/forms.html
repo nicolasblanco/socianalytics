@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Form Elements</title>
+<link href="stylesheets/dashboard/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/javascripts/jquery.js"></script>
+<script type="text/javascript" src="/javascripts/dashboard/js.js"></script>
+
+
+</head>
+<body>
+<div class="wrapper">
+  <div class="outline">
+    <div class="header">
+      <div class="top">
+        <h1 class="logo"><img src="/images/dashboard/logo.png" alt="Company" /></h1>
+        <div class="property_selector"><span>Select a View</span>
+          <div class="menu">
+            <ul>
+              <li><a href="view1.html">View 1</a></li>
+              <li><a href="view2.html">View 2</a></li>
+              <li><a href="view3.html">View 3</a></li>
+              <li><a href="view4.html">View 4</a></li>
+              <li><a href="people.html">People View</a></li>
+              <li><a href="view-SubNav.html">View with sub nav</a></li>
+              <li><a href="single.html">Single Page</a></li>
+              <li><a href="formelements.html">Form Elements</a></li>
+              <li><a href="buttons.html">Buttons</a></li>
+            </ul>
+          </div>
+        </div>
+        <!--#progerty_selector end -->
+        <div class="account_box">Logged in as UserName <a href="profile.html"><span>My Profile</span></a><a href="login.html"><span>Logout</span></a><a href="#"><span>Help</span></a></div>
+      </div>
+      <!--div.top end -->
+      <div class="navbar">
+        <h1>Nav Bar Buttons</h1>
+        <ul>
+          <li class="current"><a href=""><span><img src="/images/dashboard/icon-home.gif" alt="icon" />Button 1</span></a></li>
+          <li><a href=""><span><img src="/images/dashboard/icon-ticket.gif" alt="icon" />Button 2</span></a></li>
+          <li><a href=""><span><img src="/images/dashboard/icon-people.gif" alt="icon" />Button 3</span></a></li>
+          <li class="last"><a href=""><span><img src="/images/dashboard/icon-settings.gif" alt="icon" />Button 4</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <!--div.header end -->
+    <div class="container">
+      <div class="sidebar">
+        <div class="search-box">
+          <form action="">
+            <div class="input-box">
+              <input class="search-input" name="" type="text" />
+            </div>
+            <input value=" " name="" type="submit" class="searchButton" />
+          </form>
+        </div>
+      </div>
+      <div class="main">
+        <div class="page-content">
+          <div id="flash">
+            <div class="flash">
+              <div class="notice">Success Message!</div>
+              <div class="fourcorners">
+                <div class="corner-1"><img alt="" src="/images/dashboard/corner-grn-1.gif"/></div>
+                <div class="corner-2"><img alt="" src="/images/dashboard/corner-grn-2.gif"/></div>
+                <div class="corner-3"><img alt="" src="/images/dashboard/corner-grn-3.gif"/></div>
+                <div class="corner-4"><img alt="" src="/images/dashboard/corner-grn-4.gif"/></div>
+              </div>
+            </div>
+          </div>
+          <div class="error-overview">
+			One or more errors prevented the form from being submitted. Please
+			see the errors below and correct any problems.
+		  </div>
+          <div class="form-create">
+            <h3 class="title">Form Elements</h3>
+            <form action="#" class="edit_person" id="edit_person" method="post">
+            	<div style="margin:0;padding:0"></div>
+            
+              	<h3 class="title">Title</h3>
+              	<ul>
+                	<li>
+                        <label for="person_first_name">Input Field</label>
+                        <div class="input-field">
+                          <input class="input-text" id="person_first_name" name="person[first_name]" size="30" type="text" value=""/>
+                  		</div>
+                	</li>
+              	</ul>
+              	<h3 class="title">Title</h3>
+              	<ul>
+              		<li>
+                    	<div class="fieldWithErrors"><label for="ticket_title">Field With Errors</label></div>
+                    	<div class="input-field">
+                        	<div class="fieldWithErrors"><input class="input-text" id="ticket_title" name="ticket[title]" size="30" type="text" value=""/></div>
+                          	<div class="error-field">
+                            	<div class="error-message">
+                              		<div class="formError">Field can't be blank</div>
+                            	</div>
+                          	</div>
+                    	</div>
+                    </li>
+                	<li>
+                  		<label for="person_im_name">Select</label>
+                  		<select id="person_im_service" name="person[im_service]">
+                  			<option value="AIM" selected="selected">AIM</option>
+                  			<option value="GTalk">GTalk</option>
+                  			<option value="MSN">MSN</option>
+                  		</select>
+                	</li>
+              	</ul>
+              	<ul>
+      				<li>
+      					<label for="ticket_message">Textarea</label>
+      					<div class="input-field">
+      						<textarea class="input-text" cols="40" id="ticket_message" name="ticket[message]" rows="5"></textarea>
+      					</div>
+      				</li>
+      				<li>
+                      <label for="ticket_image">Attach Image</label>
+                      <p>
+                        <img alt="attach" src="/images/dashboard/icon-attach.gif"/>
+                        <input id="ticket_image" name="ticket[image]" size="30" type="file"/>
+                      </p>
+                    </li>
+                    <li>
+                    	<h1>H1</h1>
+		          		<h2>H2</h2>
+		          		<h3>H3</h3>
+		          		<h4>H4</h4>
+		          		<h5>H5</h5>
+                    </li>
+              	</ul>
+              	<div class="submit">
+                	<input value=" " name="" class="saveButton" type="submit"/>
+                	or
+          			<a href="dashboard.html"><input class="cancel" name="" type="button" value="Cancel"/></a>    
+          		</div>
+
+            </form>
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>
+<!--div.wrapper end, div.footer start -->
+<div class="footer">
+  <div class="footerlogo"><img src="/images/dashboard/logo.png" alt="Company Name"/></div>
+  <div id="footer-links">
+    <ul>
+    	<li><a href="#">Help &amp; Support</a></li>
+    	<li><a href="#">Link</a></li>
+    	<li><a href="#">Forums</a></li>
+    	<li><a href="#">Privacy Policy</a></li>
+    	<li><a href="#">Terms of Use</a></li>
+    </ul>
+    <p>Company Name is a Service of <a href="#">Company Name</a></p>
+  </div>
+</div>
+<!--div.footer end -->
+</body>
+</html>

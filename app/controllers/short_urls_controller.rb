@@ -1,4 +1,6 @@
 class ShortUrlsController < ApplicationController
+  layout 'url_shortener'
+  
   def show
     @short_url = ShortUrl.first(:conditions => { :chunk => params[:chunk] })
     if @short_url
@@ -9,4 +11,3 @@ class ShortUrlsController < ApplicationController
     end
   end
 end
-

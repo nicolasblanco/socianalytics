@@ -8,8 +8,10 @@
     /[if IE]
       <script src="javascripts/html5.js"></script>
     %meta{:content => "noindex,nofollow", :name => "robots"}/
-    = javascript_include_tag "jquery.min", "easySlider1.5", "saas", "jquery.cookie.min", "saas.twitter"
-
+    = javascript_include_tag :defaults
+    = javascript_include_tag "easySlider1.5", "saas", "jquery.cookie.min", "saas.twitter"
+    = csrf_meta_tag
+    
   %body.home.page.page-template-page-home-php
     .header
       %div
@@ -27,7 +29,7 @@
                   %a{:href => "contact-us.html"} Contact Us
           %h1#logo
             %a{:href => "home.html"}
-              %img{:alt => "SaaS Theme II", :src => "images/logo.png"}/
+              %img{:alt => "SaaS Theme II", :src => "/images/logo.png"}/
           .nav
             .menu-main-nav-container
               %ul#menu-main-nav.menu
@@ -54,7 +56,7 @@
             Try us out free for 30 days.
           .right
             %a{:href => "sign-up.html"}
-              %img{:alt => "Sign Up!", :src => "images/btn-sign-up.png"}/
+              %img{:alt => "Sign Up!", :src => "/images/btn-sign-up.png"}/
       .links
         .center
           %div
@@ -70,22 +72,22 @@
             %ul.social-links
               %li
                 %a{:href => "http://twitter.com/themeteam"}
-                  %img{:alt => "", :src => "images/i_socialTwitter.png"}/
+                  %img{:alt => "", :src => "/images/i_socialTwitter.png"}/
               %li
                 %a{:href => "http://www.facebook.com/facebook-name"}
-                  %img{:alt => "", :src => "images/i_socialFacebook.png"}/
+                  %img{:alt => "", :src => "/images/i_socialFacebook.png"}/
               %li
                 %a{:href => "http://www.flickr.com/photos/flickr-name/"}
-                  %img{:alt => "", :src => "images/i_socialFlickr.png"}/
+                  %img{:alt => "", :src => "/images/i_socialFlickr.png"}/
               %li
                 %a{:href => "http://saas-wp-ii.worryfreelabs.com/feed/"}
-                  %img{:alt => "", :src => "images/i_socialRss.png"}/
+                  %img{:alt => "", :src => "/images/i_socialRss.png"}/
               %li
                 %a{:href => "http://linkedin.com/in/linkedin-name"}
-                  %img{:alt => "", :src => "images/i_socialLinkedin.png"}/
+                  %img{:alt => "", :src => "/images/i_socialLinkedin.png"}/
               %li
                 %a{:href => "http://www.youtube.com/user/youtube-name"}
-                  %img{:alt => "", :src => "images/i_socialYoutube.png"}/
+                  %img{:alt => "", :src => "/images/i_socialYoutube.png"}/
           %div
             %h3 Support
             %p
@@ -107,4 +109,4 @@
               %br/
               Toll Free: (800) 555-1212
     / div.footer end
-    %script{:src => "javascripts/jquery/jquery.form.js?ver=2.02m", :type => "text/javascript"}
+    = javascript_include_tag "jquery/jquery.form.js"

@@ -1,6 +1,7 @@
-%h1 Ixi.me redirections
-
 %ul
   - @short_url.redirections.each do |redirection|
-    %li= link_to redirection.full_url, redirection.full_url
-    
+    %li
+      = link_to redirection.full_url, redirection.full_url
+      %p
+        = redirection.description
+        

@@ -2,8 +2,8 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.0'
 
-gem 'bson_ext', '~> 1.0.9'
-gem 'mongoid', '~> 2.0.0.beta.19'
+gem 'bson_ext', '1.0.9'
+gem 'mongoid', '2.0.0.beta.19'
 
 gem 'ruby_parser'
 gem 'hpricot'
@@ -18,10 +18,10 @@ gem "twitter", :git => "git://github.com/jnunemaker/twitter.git"
 gem 'state_machine-mongoid', :git => "http://github.com/lostboy/state_machine-mongoid.git"
 gem 'mini_magick'
 gem 'carrierwave'
-gem 'devise-twitter', :git => "git://github.com/MSch/devise-twitter.git"
 gem 'bitly'
 gem 'mini_fb'
 gem 'json'
+gem 'compass'
 
 group :development, :test do
   gem 'rails3-generators'
