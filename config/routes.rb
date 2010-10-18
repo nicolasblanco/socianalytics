@@ -80,6 +80,7 @@ Socianalytics::Application.routes.draw do
   #match '/dashboard' => "dashboards#show", :as => :user_root
   
   match '/:chunk' => "short_urls#show", :constraints => ShortUrlConstraint.new
+  match '/' => "short_urls#index", :contraints => { :host => "ixi.me" }
   
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
