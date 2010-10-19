@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   
   protected
   def not_found
-    render :template => Rails.root.join("public", "404.html"), :layout => false, :status => :not_found
+    render :template => "layouts/404", :layout => false, :status => :not_found
   end
 end
