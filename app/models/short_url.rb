@@ -12,7 +12,7 @@ class ShortUrl
   embeds_many :redirections, :class_name => "ShortUrlRedirection"
   accepts_nested_attributes_for :redirections, :reject_if => proc { |attributes| attributes['full_url'].blank? }
   
-  before_validation :generate_chunk
+  after_initialize :set_defaults
   validates_uniqueness_of :chunk
   validates_associated :redirections
   
@@ -20,6 +20,13 @@ class ShortUrl
     "".tap do |chunk|
       (rand(4) + 1).times { chunk << valid_chars[rand(valid_chars.size)] }
     end
+  end
+  
+  def self.unused_random_chunk
+    while 1 do
+      break unless ShortUrl.exists?(:conditions => { :chunk => (chunk = random_chunk) })
+    end
+    chunk
   end
   
   def add_request(request)
@@ -31,11 +38,8 @@ class ShortUrl
   end
   
   protected
-  def generate_chunk
-    self.chunk ||= self.class.random_chunk
-    while ShortUrl.exists?(:conditions => { :chunk => self.chunk }) do
-      self.chunk = self.class.random_chunk
-    end
+  def set_defaults
+    self.chunk ||= self.class.unused_random_chunk
   end
 end
 

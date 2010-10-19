@@ -6,9 +6,10 @@
       %tr
         %th{:colspan => "3"} Requêtes
     %tbody
-      - @short_url.requests.each_with_index do |url_request, index|
+      - @short_url.requests.desc(:created_at).each_with_index do |url_request, index|
         %tr{ table_tr_attrs(index) }
           %td= url_request.referrer
           %td= url_request.user_agent
           %td.date
             %strong= l url_request.created_at
+            

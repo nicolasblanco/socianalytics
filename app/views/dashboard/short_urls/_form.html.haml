@@ -2,6 +2,11 @@
   %div{:style => "margin:0;padding:0"}
   %h3.title Shorten one or more URLs :-)
   %ul
+    %li
+      = f.label :chunk
+      .input-field
+        = f.text_field :chunk, :class => "input-text"
+        
     = f.fields_for :redirections do |redirection_fields|
       %li
         = redirection_fields.label :full_url
