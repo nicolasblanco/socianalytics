@@ -5,12 +5,16 @@ class Dashboard::ShortUrlsController < Dashboard::DashboardController
   def load_model
     @short_url = current_user.short_urls.find(params[:id])
   end
-  
+
+  def load_models
+    5.times { @short_url.redirections.build }
+    @short_urls = current_user.short_urls.desc(:created_at).paginate(:page => params[:page], :per_page => 10)
+  end  
+    
   public
   def index
     @short_url = ShortUrl.new
-    5.times { @short_url.redirections.build }
-    @short_urls = current_user.short_urls.desc(:created_at).paginate(:page => params[:page], :per_page => 10)
+    load_models
   end
   
   def create
@@ -18,6 +22,7 @@ class Dashboard::ShortUrlsController < Dashboard::DashboardController
     if @short_url.save
       redirect_to dashboard_short_urls_path, :notice => "URL shortened successfully!"
     else
+      load_models
       render 'index'
     end
   end

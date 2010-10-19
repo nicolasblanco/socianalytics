@@ -9,6 +9,12 @@ module ApplicationHelper
     res.html_safe
   end
   
+  def error_messages_for(object)
+    if object.errors.any?
+      content_tag(:div, "One or more errors prevented the form from being submitted. Please see the errors below and correct any problems.", :class => "error-overview")
+    end
+  end
+  
   def page_title(title)
     content_for(:page_title) { title }
   end

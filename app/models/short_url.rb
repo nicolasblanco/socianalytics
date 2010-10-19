@@ -14,6 +14,9 @@ class ShortUrl
   
   after_initialize :set_defaults
   validates_uniqueness_of :chunk
+  validates_presence_of :chunk
+  validates_format_of :chunk, :with => /\A[A-Za-z0-9\-_]{1,99}\z/
+  validates_presence_of :redirections
   validates_associated :redirections
   
   def self.random_chunk
