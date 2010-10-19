@@ -10,7 +10,7 @@ class Dashboard::ShortUrlsController < Dashboard::DashboardController
   def index
     @short_url = ShortUrl.new
     5.times { @short_url.redirections.build }
-    @short_urls = ShortUrl.desc(:created_at).paginate(:page => params[:page])
+    @short_urls = ShortUrl.desc(:created_at).paginate(:page => params[:page], :per_page => 10)
   end
   
   def create
