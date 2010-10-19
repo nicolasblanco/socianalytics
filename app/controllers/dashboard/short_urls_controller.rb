@@ -3,18 +3,18 @@ class Dashboard::ShortUrlsController < Dashboard::DashboardController
   
   protected
   def load_model
-    @short_url = ShortUrl.find(params[:id])
+    @short_url = current_user.short_urls.find(params[:id])
   end
   
   public
   def index
     @short_url = ShortUrl.new
     5.times { @short_url.redirections.build }
-    @short_urls = ShortUrl.desc(:created_at).paginate(:page => params[:page], :per_page => 10)
+    @short_urls = current_user.short_urls.desc(:created_at).paginate(:page => params[:page], :per_page => 10)
   end
   
   def create
-    @short_url = ShortUrl.new(params[:short_url])
+    @short_url = current_user.short_urls.build(params[:short_url])
     if @short_url.save
       redirect_to dashboard_short_urls_path, :notice => "URL shortened successfully!"
     else
@@ -28,3 +28,4 @@ class Dashboard::ShortUrlsController < Dashboard::DashboardController
     redirect_to dashboard_short_urls_path, :notice => "URL destroyed successfully!"
   end
 end
+
