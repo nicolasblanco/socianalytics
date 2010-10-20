@@ -10,7 +10,7 @@ class ShortUrl
   referenced_in :user
   embeds_many :requests, :class_name => "ShortUrlRequest"
   embeds_many :redirections, :class_name => "ShortUrlRedirection"
-  accepts_nested_attributes_for :redirections, :reject_if => proc { |attributes| attributes['full_url'].blank? }
+  accepts_nested_attributes_for :redirections, :allow_destroy => true, :reject_if => proc { |attributes| attributes['full_url'].blank? }
   
   after_initialize :set_defaults
   validates_uniqueness_of :chunk

@@ -7,10 +7,10 @@ class Dashboard::ShortUrlsController < Dashboard::DashboardController
   end
 
   def load_models
-    5.times { @short_url.redirections.build }
+    @short_url.redirections.build if @short_url.redirections.empty?
     @short_urls = current_user.short_urls.desc(:created_at).paginate(:page => params[:page], :per_page => 10)
   end  
-    
+  
   public
   def index
     @short_url = ShortUrl.new
