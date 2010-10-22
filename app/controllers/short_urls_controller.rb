@@ -1,5 +1,6 @@
 class ShortUrlsController < ApplicationController
   layout 'url_shortener'
+  before_filter :authenticate_user!, :only => %w(create)
   
   def show
     @short_url = ShortUrl.first(:conditions => { :chunk => params[:chunk] })
@@ -10,4 +11,12 @@ class ShortUrlsController < ApplicationController
       raise Mongoid::Errors::DocumentNotFound.new(ShortUrl, params[:chunk])
     end
   end
+  
+  def create
+    @short_url = current_user.short_urls.create(:redirections => [{ :full_url => params[:url] }])
+    respond_to do |format|
+      format.xml
+    end
+  end
 end
+

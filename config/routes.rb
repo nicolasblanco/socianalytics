@@ -77,6 +77,8 @@ Socianalytics::Application.routes.draw do
   
   devise_for :user
   
+  resources :short_urls, :only => %w(create)
+  
   #match '/dashboard' => "dashboards#show", :as => :user_root
   
   match '/:chunk' => "short_urls#show", :constraints => ShortUrlConstraint.new
