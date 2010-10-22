@@ -1,0 +1,44 @@
+<style>
+body {
+  min-width:357px;
+  overflow-x:hidden;
+  font-family: “Helvetica Neue”, helvetica, arial, sans-serif;
+}
+
+img {
+  margin:5px;
+  border:2px solid black;
+  vertical-align:middle;
+  width:75px;
+  height:75px;
+}
+</style>
+
+<script>
+var req = new XMLHttpRequest();
+
+chrome.tabs.getSelected(null, function(tab) {
+    tab_url = tab.url;
+    
+    req.open(
+      "POST",
+      "http://www.socianalytics.com/short_urls?url=" + tab_url,
+    true);
+    req.onload = requestSuccess;
+    req.send(null);
+});
+
+function requestSuccess() {
+  var short_url = req.responseXML.getElementsByTagName("short_url")[0].childNodes[0].nodeValue;
+  nouveauDiv = document.createElement("div");
+  nouveauDiv.innerHTML = "<p>" + short_url + "</p>";
+  document.body.appendChild(nouveauDiv);
+}
+</script>
+
+<body>
+  <h1>ixi.me</h1>
+
+  <p>Copyright &copy; 2010 Nicolas Blanco - Laurent Matthieu Blanco</p>
+</body>
+
