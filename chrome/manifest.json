@@ -1,0 +1,13 @@
+{
+  "name": "ixi.me shortener",
+  "version": "0.1",
+  "permissions": [
+    "tabs", "http://www.socianalytics.com/"
+  ],
+  "browser_action": {
+      "name": "Make this page red",
+      "default_icon": "icon.png",
+      "popup": "popup.html"
+  }
+}
+
