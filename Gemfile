@@ -23,6 +23,7 @@ gem 'bitly'
 gem 'mini_fb'
 gem 'json'
 gem 'compass'
+gem 'oauth'
 
 group :development, :test do
   gem 'rails3-generators'

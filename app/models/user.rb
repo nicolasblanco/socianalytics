@@ -35,9 +35,13 @@ class User
     first(:conditions => { :twitter_oauth_token => token, :twitter_oauth_secret => secret })
   end
   
+  def linked_to_twitter?
+    twitter_oauth_token.present? && twitter_oauth_secret.present?
+  end
+  
   def twitter_client
     @twitter_client ||= begin
-      Twitter::Base.new({ :access_key => twitter_oauth_token, :access_secret => twitter_oauth_secret })
+      Twitter::Client.new({ :oauth_token => twitter_oauth_token, :oauth_token_secret => twitter_oauth_secret })
     end
   end
 

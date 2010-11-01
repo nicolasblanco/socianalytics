@@ -1,0 +1,25 @@
+- page_title "Profile"
+
+.data-table
+  %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+    %thead
+      %tr
+        %th Réseau
+        %th &nbsp;
+    %tbody
+      %tr{ table_tr_attrs(0) }
+        %td
+          %label.label.ticket Twitter
+        %td
+          - if current_user.linked_to_twitter?
+            = link_to "Lier à nouveau", [:twitter_link, :dashboard, :profile], :method => :post
+            |
+            = link_to "Supprimer le lien", [:destroy_twitter_link, :dashboard, :profile], :method => :delete, :confirm => "Voulez-vous vraiment supprimer le lien vers Twitter ? Vous pourrez autoriser à nouveau l'application plus tard si vous le souhaitez..."
+          - else
+            = link_to "Lier", [:twitter_link, :dashboard, :profile], :method => :post
+          
+      %tr{ table_tr_attrs(1) }
+        %td
+          %label.label.ticket Facebook
+        %td
+          Lier
