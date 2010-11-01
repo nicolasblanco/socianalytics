@@ -1,0 +1,66 @@
+- page_title "Followers populaires"
+
+#container.highcharts-container{:style => "height:410px; width: 800px; margin: 0 auto; clear:both"}
+
+:javascript
+  var chart;
+  $(document).ready(function() {
+     chart = new Highcharts.Chart({
+        chart: {
+           renderTo: 'container',
+           defaultSeriesType: 'bar'
+        },
+        title: {
+           text: 'Vos 15 followers les plus influents'
+        },
+        subtitle: {
+           text: ''
+        },
+        xAxis: {
+           categories: #{array_or_string_for_javascript(@followers.map(&:screen_name))},
+           title: {
+              text: null
+           }
+        },
+        yAxis: {
+           min: 0,
+           title: {
+              text: 'Nombre',
+              align: 'high'
+           }
+        },
+        tooltip: {
+           formatter: function() {
+              return ''+
+                  this.series.name +': '+ this.y +' comptes';
+           }
+        },
+        plotOptions: {
+           bar: {
+              dataLabels: {
+                 enabled: true
+              }
+           }
+        },
+        legend: {
+           layout: 'vertical',
+           align: 'right',
+           verticalAlign: 'top',
+           x: -100,
+           y: 100,
+           borderWidth: 1,
+           backgroundColor: '#FFFFFF'
+        },
+        credits: {
+           enabled: false
+        },
+             series: [{
+           name: 'followers',
+           data: [#{@followers.map(&:followers_count).join(', ')}]
+        }, {
+           name: 'followings',
+           data: [#{@followers.map(&:friends_count).join(', ')}]
+        }]
+     });
+  });
+  
