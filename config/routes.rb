@@ -61,6 +61,11 @@ Socianalytics::Application.routes.draw do
   
   namespace :dashboard do
     resources :short_urls
+    resources :stats do
+      collection do
+        get :popular_followers
+      end
+    end
     resource :profile do
       member do
         post :twitter_link
