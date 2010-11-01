@@ -61,6 +61,16 @@ Socianalytics::Application.routes.draw do
   
   namespace :dashboard do
     resources :short_urls
+    resource :profile do
+      member do
+        post :twitter_link
+        delete :destroy_twitter_link
+        get :twitter_callback
+        
+        post :facebook_link
+        get :facebook_callback
+      end
+    end
   end
   
   match "settings" => "settings#show"

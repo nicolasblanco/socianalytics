@@ -23,29 +23,31 @@
               .menu
                 %ul
                   %li
-                    %a{:href => "view1.html"} View 1
-                  %li
-                    %a{:href => "view2.html"} View 2
-                  %li
-                    %a{:href => "view3.html"} View 3
-                  %li
-                    %a{:href => "view4.html"} View 4
-                  %li
-                    %a{:href => "people.html"} People View
-                  %li
-                    %a{:href => "view-SubNav.html"} View with sub nav
-                  %li
-                    %a{:href => "single.html"} Single Page
-                  %li
-                    %a{:href => "formelements.html"} Form Elements
-                  %li
-                    %a{:href => "buttons.html"} Buttons
+                    = link_to "URL shortener", [:dashboard, :short_urls]
+                  /%li
+                  /  %a{:href => "view1.html"} View 1
+                  /%li
+                  /  %a{:href => "view2.html"} View 2
+                  /%li
+                  /  %a{:href => "view3.html"} View 3
+                  /%li
+                  /  %a{:href => "view4.html"} View 4
+                  /%li
+                  /  %a{:href => "people.html"} People View
+                  /%li
+                  /  %a{:href => "view-SubNav.html"} View with sub nav
+                  /%li
+                  /  %a{:href => "single.html"} Single Page
+                  /%li
+                  /  %a{:href => "formelements.html"} Form Elements
+                  /%li
+                  /  %a{:href => "buttons.html"} Buttons
             / #progerty_selector end
             .account_box
-              Logged in as UserName
-              %a{:href => "profile.html"}
+              Logged in as #{current_user.email}
+              = link_to [:dashboard, :profile] do
                 %span My Profile
-              %a{:href => "login.html"}
+              = link_to [:destroy, :user_session] do
                 %span Logout
               %a{:href => "#"}
                 %span Help
