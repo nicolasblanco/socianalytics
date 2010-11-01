@@ -22,6 +22,10 @@
           %td
             = link_to "destroy", [:dashboard, short_url], :method => :delete, :confirm => "Are you sure you want to destroy this short url?"
 
+= will_paginate @short_urls
+%br
+
+= error_messages_for @short_url
 .form-create
   = render "form"
     
