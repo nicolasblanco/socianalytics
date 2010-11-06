@@ -18,6 +18,8 @@ class User
   references_many :user_stats
   references_many :campaigns
   references_many :short_urls
+  
+  references_many :stats_popular_followers, :class_name => "Stats::PopularFollower"
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable

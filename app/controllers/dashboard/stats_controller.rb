@@ -10,6 +10,6 @@ class Dashboard::StatsController < Dashboard::DashboardController
   
   public
   def popular_followers
-    @followers = current_user.twitter_client.followers.sort{|a, b| a.followers_count <=> b.followers_count}.reverse.first(15)
+    @stat = current_user.stats_popular_followers.last
   end
 end
