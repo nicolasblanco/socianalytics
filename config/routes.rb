@@ -64,6 +64,7 @@ Socianalytics::Application.routes.draw do
     resources :stats do
       collection do
         get :popular_followers
+        get :followers_count
       end
     end
     resource :profile do
@@ -76,6 +77,7 @@ Socianalytics::Application.routes.draw do
         get :facebook_callback
       end
     end
+    root :to => "stats#followers_count"
   end
   
   match "settings" => "settings#show"

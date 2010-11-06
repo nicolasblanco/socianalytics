@@ -19,13 +19,12 @@
             %h1.logo
               %img{:alt => "Company", :src => "/images/dashboard/logo.png"}/
             .property_selector
-              %span Select a View
+              %span Sélectionnez une vue
               .menu
                 %ul
-                  %li
-                    = link_to "URL shortener", [:dashboard, :short_urls]
-                  %li
-                    = link_to "Followers populaires", [:popular_followers, :dashboard, :stats]
+                  %li= link_to "URL shortener", [:dashboard, :short_urls]
+                  %li= link_to "Nombre de followers", [:followers_count, :dashboard, :stats]
+                  %li= link_to "Followers populaires", [:popular_followers, :dashboard, :stats]
                   /%li
                   /  %a{:href => "view1.html"} View 1
                   /%li
@@ -56,27 +55,27 @@
           / div.top end
           .navbar
             %h1 Socianalytics
-            %ul
-              %li.current
-                %a{:href => ""}
-                  %span
-                    %img{:alt => "icon", :src => "/images/dashboard/icon-home.gif"}>/
-                    Button 1
-              %li
-                %a{:href => ""}
-                  %span
-                    %img{:alt => "icon", :src => "/images/dashboard/icon-ticket.gif"}>/
-                    Button 2
-              %li
-                %a{:href => ""}
-                  %span
-                    %img{:alt => "icon", :src => "/images/dashboard/icon-people.gif"}>/
-                    Button 3
-              %li.last
-                %a{:href => ""}
-                  %span
-                    %img{:alt => "icon", :src => "/images/dashboard/icon-settings.gif"}>/
-                    Button 4
+            /%ul
+            /  %li.current
+            /    %a{:href => ""}
+            /      %span
+            /        %img{:alt => "icon", :src => "/images/dashboard/icon-home.gif"}>/
+            /        Button 1
+            /  %li
+            /    %a{:href => ""}
+            /      %span
+            /        %img{:alt => "icon", :src => "/images/dashboard/icon-ticket.gif"}>/
+            /        Button 2
+            /  %li
+            /    %a{:href => ""}
+            /      %span
+            /        %img{:alt => "icon", :src => "/images/dashboard/icon-people.gif"}>/
+            /        Button 3
+            /  %li.last
+            /    %a{:href => ""}
+            /      %span
+            /        %img{:alt => "icon", :src => "/images/dashboard/icon-settings.gif"}>/
+            /        Button 4
           / div.navbar end
         / div.header end
         .container
@@ -87,17 +86,17 @@
                   %input.search-input{:name => "", :type => "text"}/
                 %input.searchButton{:name => "", :type => "submit", :value => " "}/
             .property-nav
-              %button.button Create
-              %dl
-                %dt Sub List
-                %dd
-                  %ul
-                    %li
-                      %a{:href => "#"} Sub List 1
-                    %li
-                      %a{:href => "#"} Sub List 2
-                    %li
-                      %a{:href => "#"} Sub List 3
+              /%button.button Create
+              /%dl
+              /  %dt Sub List
+              /  %dd
+              /    %ul
+              /      %li
+              /        %a{:href => "#"} Sub List 1
+              /      %li
+              /        %a{:href => "#"} Sub List 2
+              /      %li
+              /        %a{:href => "#"} Sub List 3
           / div.sidebar end
           .main
             .page-head
@@ -126,6 +125,6 @@
           %li
             %a{:href => "#"} Terms of Use
         %p
-          Company Name is a Service of
-          %a{:href => "#"} Company Name
+          Socianalytics
+          by Nicolas Blanco &amp; Laurent Matthieu Blanco
     / div.footer end
