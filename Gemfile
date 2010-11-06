@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '3.0.1'
 
-gem 'bson_ext', '1.0.9'
-gem 'bson', '1.0.9'
-gem 'mongoid', '2.0.0.beta.19'
+gem 'bson_ext', '1.1.2'
+gem 'bson', '1.1.2'
+gem 'mongoid', '2.0.0.beta.20'
 
 gem 'ruby_parser'
 gem 'hpricot'
