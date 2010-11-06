@@ -10,6 +10,10 @@ class Dashboard::StatsController < Dashboard::DashboardController
   
   public
   def popular_followers
-    @stat = current_user.stats_popular_followers.last
+    @stat = current_user.stats_twitter_popular_followers.last
+  end
+  
+  def followers_count
+    @stat = current_user.stats_twitter_follower_counts.all
   end
 end
