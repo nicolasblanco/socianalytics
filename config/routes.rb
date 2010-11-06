@@ -90,7 +90,7 @@ Socianalytics::Application.routes.draw do
     get :tracker, :on => :member
   end
   
-  devise_for :user
+  devise_for :user, :controllers => { :sessions => "sessions" }
   
   resources :short_urls, :only => %w(create)
   
