@@ -1,0 +1,7 @@
+= form_for User.new, :url => user_session_path do |f|
+  %label Email:
+  = f.text_field :email, :class => "input-text"
+  %label Password:
+  = f.password_field :password, :class => "input-text"
+  /%a.link{:href => "forgot-password.html"} Forgot Your Password?
+  %input.btn.loginButton{:name => "", :type => "submit", :value => " "}/
