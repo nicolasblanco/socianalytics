@@ -53,6 +53,7 @@ class User
   end
   
   def twitter_followers_delta_count
+    return 0 if stats_twitter_follower_counts.empty?
     latest_index = stats_twitter_follower_counts.count - 1
     stats_twitter_follower_counts[latest_index].try(:count) - stats_twitter_follower_counts[latest_index - 1].try(:count)
   end
