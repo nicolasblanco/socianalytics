@@ -1,4 +1,27 @@
 module ApplicationHelper
+  # Pluralize helper for French language.
+  #
+  # Because French pluralization has special rules :
+  # Example :
+  # pluralize(0, "degré") # => "0 degré"
+  # pluralize(1, "degré") # => "1 degré"
+  # pluralize(2, "degré") # => "2 degrés"
+  # pluralize(0.5, "degré") # => "0.5 degré"
+  # pluralize(1.9, "degré") # => "1.9 degré"
+  # pluralize(-1.9, "degré") # => "-1.9 degré"
+  # pluralize(-2, "degré") # => "-2 degrés"
+  #
+  # Options :
+  # :without_count : if you don't want to output the count (only the word),
+  # :plural : to use a custom plural.
+  #
+  def pluralize(count, singular, options = {})
+    "".tap do |result|
+      result << "#{count || 0} " unless options[:without_count]
+      result << (count.to_i > -2 && count.to_i < 2 ? singular : (options[:plural] || singular.pluralize)).to_s
+    end
+  end
+  
   def format_stats_for_js(user = current_user)
     res = ""
     res << "[{name: 'twitter : #{user.twitter_handle}', data: [#{user.user_stats.map(&:number_of_followers).join(",")}]}"
