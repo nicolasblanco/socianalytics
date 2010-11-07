@@ -77,7 +77,7 @@ Socianalytics::Application.routes.draw do
         get :facebook_callback
       end
     end
-    root :to => "stats#followers_count"
+    root :to => "home#show"
   end
   
   match "settings" => "settings#show"
