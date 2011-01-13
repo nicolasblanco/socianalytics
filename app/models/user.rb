@@ -10,6 +10,7 @@ class User
   field :twitter_handle
   field :twitter_oauth_token
   field :twitter_oauth_secret
+  field :twitter_main_id
   field :last_mention_processed
   field :facebook_access_token
   field :facebook_page_id

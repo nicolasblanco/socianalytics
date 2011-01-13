@@ -4,4 +4,10 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
+begin
+  require 'resque/tasks'
+rescue LoadError
+  STDERR.puts "Resque is not enabled!"
+end
+
 Socianalytics::Application.load_tasks
