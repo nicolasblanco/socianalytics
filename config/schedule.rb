@@ -19,6 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
+set :environment, :staging
+
 every :hour do # Many shortcuts available: :hour, :day, :month, :year, :reboot
   rake "twitter:users:update"
 end
