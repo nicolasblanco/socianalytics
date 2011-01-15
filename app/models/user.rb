@@ -49,6 +49,10 @@ class User
     end
   end
   
+  def twitter_user
+    TwitterUser.where(:twitter_id => twitter_main_id).first
+  end
+  
   def twitter_followers_count
     stats_twitter_follower_counts.last.try(:count)
   end
