@@ -26,6 +26,7 @@ set :use_sudo, false
 
 require 'capistrano/ext/multistage'
 require "bundler/capistrano"
+require "whenever/capistrano"
 
 after "deploy:update_code", "shared_config:symlinks"
 after "deploy:setup", "config:mkdir"

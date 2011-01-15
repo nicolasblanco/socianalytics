@@ -10,6 +10,7 @@ class User
   field :twitter_handle
   field :twitter_oauth_token
   field :twitter_oauth_secret
+  field :twitter_main_id
   field :last_mention_processed
   field :facebook_access_token
   field :facebook_page_id
@@ -46,6 +47,10 @@ class User
     @twitter_client ||= begin
       Twitter::Client.new({ :oauth_token => twitter_oauth_token, :oauth_token_secret => twitter_oauth_secret })
     end
+  end
+  
+  def twitter_user
+    TwitterUser.where(:twitter_id => twitter_main_id).first
   end
   
   def twitter_followers_count

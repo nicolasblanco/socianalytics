@@ -21,6 +21,7 @@ class Dashboard::ProfilesController < Dashboard::DashboardController
   def twitter_callback
     @twitter_access_token = OAuth::RequestToken.new(@twitter_consumer, session[:twitter_request_token], session[:twitter_request_secret]).get_access_token(:oauth_verifier => params[:oauth_verifier])
     current_user.twitter_oauth_token, current_user.twitter_oauth_secret = @twitter_access_token.token, @twitter_access_token.secret
+    current_user.twitter_main_id = current_user.twitter_client.user.id
     current_user.save
     
     redirect_to [:dashboard, :profile], :notice => "Lien vers compte Twitter créé avec succès !"
