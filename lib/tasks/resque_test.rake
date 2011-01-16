@@ -1,4 +1,4 @@
-namespace :resque
+namespace :resque do
   task :test => :environment do
     Resque.enqueue(TestJob, "1234")
     Resque.enqueue(TestJob, "1234")
