@@ -1,21 +1,77 @@
 - page_title "Tableau de bord - Bienvenue !"
 
 .page-content
-  .notes-detail
-    .close-note
-    .shadow
-      %div
-        %ul
-          %li
-            Twitter - Vous avez
-            %font{:color => "#f15a24"}= current_user.twitter_followers_count
-            followers,
-            - delta_count = current_user.twitter_followers_delta_count
-            - if delta_count > 0
-              vous êtes suivi par #{content_tag(:font, delta_count, :color => "#f15a24")} #{pluralize(delta_count, "utilisateur", :without_count => true)} de plus par rapport à la veille.
-            - elsif delta_count.zero?
-              vous n'avez aucune personne de plus qui vous suit par rapport à la veille.
-            - elsif delta_count < 0
-              vous avez perdu #{content_tag(:font, delta_count.abs, :color => "#f15a24")} #{pluralize(delta_count, "utilisateur", :without_count => true)} par rapport à la veille. :-(
-            
+  - if current_twitter_user
+    .notes-detail
+      .close-note
+      .shadow
+        %div
+          %ul
+            %li
+              = image_tag current_twitter_user.twitter_profile_image_url
+              Twitter : #{current_twitter_user.twitter_screen_name}
 
+  #container.highcharts-container{:style => "height:410px; width: 800px; margin: 0 auto; clear:both"}
+
+:javascript
+  var chart;
+  $(document).ready(function() {
+     chart = new Highcharts.Chart({
+        chart: {
+           renderTo: 'container',
+           defaultSeriesType: 'line',
+           marginRight: 130,
+           marginBottom: 25
+        },
+        title: {
+           text: 'Followings, followers et friends',
+           x: -20 //center
+        },
+        subtitle: {
+           text: 'Account : #{current_twitter_user.twitter_screen_name}',
+           x: -20
+        },
+        xAxis: {
+           categories: #{js_array(current_twitter_user.stat_for(:twitter_followers_count).map { |s| I18n.l(s.updated_at) }, :strings => true)}
+        },
+        yAxis: {
+           title: {
+              text: 'Nombre'
+           },
+           plotLines: [{
+              value: 0,
+              width: 1,
+              color: '#808080'
+           }]
+        },
+        tooltip: {
+           formatter: function() {
+                     return '<b>'+ this.series.name +'</b><br/>'+
+                 this.x +': '+ this.y;
+           }
+        },
+        legend: {
+           layout: 'vertical',
+           align: 'right',
+           verticalAlign: 'top',
+           x: -10,
+           y: 100,
+           borderWidth: 0
+        },
+        series: [{
+           name: 'Followers',
+           data: #{js_array(current_twitter_user.stat_for(:twitter_followers_count).map(&:value))}
+        },
+        {
+           name: 'Followings',
+           data: #{js_array(current_twitter_user.stat_for(:twitter_friends_count).map(&:value))}
+        },
+        {
+           name: 'Friends',
+           data: #{js_array(current_twitter_user.stat_for(:friends_size).map(&:value))}
+        }
+        ]
+     });
+  
+  
+  });
