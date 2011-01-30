@@ -1,4 +1,9 @@
 module ApplicationHelper
+  
+  def js_array(array, options = {})
+    options[:strings].present? ? "['#{array.join('\',\'')}']" : "[#{array.join(', ')}]"
+  end
+  
   # Pluralize helper for French language.
   #
   # Because French pluralization has special rules :

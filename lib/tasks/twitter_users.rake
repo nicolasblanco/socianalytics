@@ -2,7 +2,7 @@ namespace :twitter do
   namespace :users do
     task :update => :environment do
       User.all.each do |user|
-        Resque.enqueue(TwitterUserJob, user.id, user.twitter_main_id)
+        Resque.enqueue(TwitterUserJob, user.id, user.twitter_main_id, true)
       end
     end
     
@@ -11,7 +11,7 @@ namespace :twitter do
         if main_twitter_user = user.twitter_user
           main_twitter_user.update_associated_with!(user)
         else
-          Resque.enqueue(TwitterUserJob, user.id, user.twitter_main_id)
+          Resque.enqueue(TwitterUserJob, user.id, user.twitter_main_id, true)
         end
       end
     end
