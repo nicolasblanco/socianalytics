@@ -10,7 +10,9 @@
             %li
               = image_tag current_twitter_user.twitter_profile_image_url
               Twitter : #{current_twitter_user.twitter_screen_name}
-
+              &nbsp;
+              = link_to "Mettre à jour maintenant", update_twitter_user_dashboard_stats_path, :method => :post
+  
   #container.highcharts-container{:style => "height:410px; width: 800px; margin: 0 auto; clear:both"}
 
 :javascript

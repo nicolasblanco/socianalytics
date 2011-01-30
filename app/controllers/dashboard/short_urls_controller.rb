@@ -9,7 +9,7 @@ class Dashboard::ShortUrlsController < Dashboard::DashboardController
   def load_models
     @short_url.redirections.build if @short_url.redirections.empty?
     @short_urls = current_user.short_urls.desc(:created_at).paginate(:page => params[:page], :per_page => 10)
-  end  
+  end
   
   public
   def index
