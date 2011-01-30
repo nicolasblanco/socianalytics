@@ -7,7 +7,7 @@ class TwitterUserJob
   restrict :per_hour => 300, :concurrent => 1
   
   def self.restriction_identifier(user_id, twitter_id, additional_data)
-    [self.to_s, twitter_id].join(":")
+    [self.to_s, user_id.to_s].join(":")
   end
   
   def self.perform(user_id, twitter_id, additional_data)
