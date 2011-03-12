@@ -35,7 +35,7 @@ def rake(*tasks)
   end
 end
 
-after "deploy:update_code", "shared_config:symlinks"
+after "deploy:update_code", "shared_config:symlinks", "resque:restart_workers"
 after "deploy:setup", "config:mkdir"
 
 namespace :config do
