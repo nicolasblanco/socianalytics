@@ -26,7 +26,6 @@ set :use_sudo, false
 
 require 'capistrano/ext/multistage'
 require "bundler/capistrano"
-require "whenever/capistrano"
 
 def rake(*tasks)
   rails_env = fetch(:rails_env, "production")
