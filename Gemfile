@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.5'
 
 gem "bson_ext", "~> 1.2"
 gem 'mongoid', '2.0.0.rc.7'
@@ -28,7 +28,6 @@ gem 'resque'
 gem 'resque-restriction'
 gem 'resque-lock', :git => 'git://github.com/defunkt/resque-lock.git'
 #gem 'resque-loner', :git => 'git://github.com/jayniz/resque-loner.git'
-gem 'whenever', :require => false
 
 group :development, :test do
   gem 'rails3-generators'

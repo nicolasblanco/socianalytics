@@ -3,7 +3,7 @@
 class TwitterUserJob
   extend Resque::Plugins::Restriction
   
-  @queue = :normal
+  @queue = :medium
   restrict :per_hour => 300, :concurrent => 1
   
   def self.restriction_identifier(user_id, twitter_id, additional_data)

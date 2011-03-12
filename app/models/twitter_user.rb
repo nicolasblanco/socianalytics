@@ -29,14 +29,6 @@ class TwitterUser
     Resque.enqueue(TwitterUserJob, user.id, twitter_id)
   end
   
-  def update_associated_with!(user, force = false)
-    puts "update_associated_with! for #{twitter_id}, force = #{force}"
-    (followers_ids | followings_ids).each do |current_twitter_id|
-      current_twitter_user = TwitterUser.where(:twitter_id => current_twitter_id).first
-      Resque.enqueue(TwitterUserJob, user.id, current_twitter_id, false) if force || current_twitter_user.blank? || current_twitter_user.updated_at < 1.day.ago
-    end
-  end
-  
   def stat_mash(attribute)
     Hashie::Mash.new(:updated_at => updated_at, :value => send(attribute))
   end
