@@ -1,5 +1,5 @@
 rails_env   = ENV['RAILS_ENV']  || "staging"
-rails_root  = ENV['RAILS_ROOT'] || "/home/novagile/www/socianalytics/current"
+rails_root  = ENV['RAILS_ROOT'] || "/home/rails/www/socianalytics/current"
 
 # Resque
 God.watch do |w|
