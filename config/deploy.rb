@@ -28,6 +28,14 @@ require 'capistrano/ext/multistage'
 require "bundler/capistrano"
 require "whenever/capistrano"
 
+def rake(*tasks)
+  rails_env = fetch(:rails_env, "production")
+  rake = fetch(:rake, "rake")
+  tasks.each do |t|
+    run "if [ -d #{release_path} ]; then cd #{release_path}; else cd #{current_path}; fi; #{rake} RAILS_ENV=#{rails_env} #{t}"
+  end
+end
+
 after "deploy:update_code", "shared_config:symlinks"
 after "deploy:setup", "config:mkdir"
 
@@ -41,5 +49,11 @@ end
 namespace :shared_config do
   task :symlinks do
     run "ln -nfs #{shared_path}/config/mongoid.yml #{release_path}/config/"
+  end
+end
+
+namespace :resque do
+  task :restart_workers, :roles => :db do
+    rake "resque:restart_workers"
   end
 end

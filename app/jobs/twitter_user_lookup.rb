@@ -1,5 +1,5 @@
 class TwitterUserLookup  
-  @queue = :normal
+  @queue = :medium
 
   def self.perform(user_id, twitter_ids)
     user = User.find(user_id)
