@@ -65,7 +65,7 @@ Socianalytics::Application.routes.draw do
       collection do
         post :update_twitter_user
         get :popular_followers
-        get :followers_count
+        get :spam_followers
       end
     end
     resource :profile do

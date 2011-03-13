@@ -1,3 +1,4 @@
+
 class Dashboard::StatsController < Dashboard::DashboardController
   before_filter :check_link
   
@@ -16,10 +17,10 @@ class Dashboard::StatsController < Dashboard::DashboardController
   end
   
   def popular_followers
-    @stat = current_user.stats_twitter_popular_followers.last
+    @followers = TwitterUser.any_in(:twitter_id => current_twitter_user.followers_ids).desc(:twitter_followers_count).paginate(:page => params[:page], :per_page => 20)
   end
-  
-  def followers_count
-    @stat = current_user.stats_twitter_follower_counts.all
+
+  def spam_followers
+    @followers = TwitterUser.any_in(:twitter_id => current_twitter_user.followers_ids).where(:twitter_followers_count.lt => 50, :twitter_friends_count.gt => 100)
   end
 end
