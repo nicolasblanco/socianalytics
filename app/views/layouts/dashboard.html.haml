@@ -17,7 +17,7 @@
         .header
           .top
             %h1.logo
-              %img{:alt => "Company", :src => "/images/dashboard/logo.png"}/
+              = link_to image_tag("dashboard/logo.png"), dashboard_root_path
             .property_selector
               %span Sélectionnez une vue
               .menu

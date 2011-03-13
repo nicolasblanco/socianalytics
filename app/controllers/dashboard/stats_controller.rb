@@ -1,7 +1,8 @@
 
 class Dashboard::StatsController < Dashboard::DashboardController
   before_filter :check_link
-  
+  before_filter :require_twitter_user!, :except => %w(update_twitter_user)
+
   protected
   def check_link
     unless current_user.linked_to_twitter?
