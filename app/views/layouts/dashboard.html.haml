@@ -17,14 +17,15 @@
         .header
           .top
             %h1.logo
-              %img{:alt => "Company", :src => "/images/dashboard/logo.png"}/
+              = link_to image_tag("dashboard/logo.png"), dashboard_root_path
             .property_selector
               %span Sélectionnez une vue
               .menu
                 %ul
                   %li= link_to "URL shortener", [:dashboard, :short_urls]
-                  %li= link_to "Nombre de followers", [:followers_count, :dashboard, :stats]
                   %li= link_to "Followers populaires", [:popular_followers, :dashboard, :stats]
+                  %li= link_to "Followers spam", [:spam_followers, :dashboard, :stats]
+
                   /%li
                   /  %a{:href => "view1.html"} View 1
                   /%li
