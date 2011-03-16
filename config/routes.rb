@@ -60,12 +60,20 @@ Socianalytics::Application.routes.draw do
   # See how all your routes lay out with "rake routes"
   
   namespace :dashboard do
+    resources :blocks, :only => %w() do
+      collection do
+        post :batch_create
+      end
+    end
+
     resources :short_urls
     resources :stats do
       collection do
         post :update_twitter_user
         get :popular_followers
         get :spam_followers
+        get :friends
+        get :no_following_followers
       end
     end
     resource :profile do

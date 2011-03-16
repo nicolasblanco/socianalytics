@@ -21,7 +21,15 @@ class Dashboard::StatsController < Dashboard::DashboardController
     @followers = TwitterUser.any_in(:twitter_id => current_twitter_user.followers_ids).desc(:twitter_followers_count).paginate(:page => params[:page], :per_page => 20)
   end
 
+  def friends
+    @followers = TwitterUser.any_in(:twitter_id => current_twitter_user.friends_ids).desc(:twitter_followers_count).paginate(:page => params[:page], :per_page => 20)
+  end
+
+  def no_following_followers
+    @followers = TwitterUser.any_in(:twitter_id => current_twitter_user.no_following_followers_ids).desc(:twitter_followers_count).paginate(:page => params[:page], :per_page => 20)
+  end
+
   def spam_followers
-    @followers = TwitterUser.any_in(:twitter_id => current_twitter_user.followers_ids).where(:twitter_followers_count.lt => 50, :twitter_friends_count.gt => 100)
+    @followers = TwitterUser.any_in(:twitter_id => current_twitter_user.followers_ids).where(:twitter_followers_count.lt => 50, :twitter_friends_count.gt => 100).paginate(:page => params[:page], :per_page => 20)
   end
 end

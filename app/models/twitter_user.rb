@@ -5,20 +5,27 @@ class TwitterUser
   
   @@twitter_fields = %w(location profile_image_url screen_name friends_count followers_count)
   cattr_reader :twitter_fields
+
+  @@twitter_latest_tweet_fields = %w(created_at text)
+  cattr_reader :twitter_latest_tweet_fields
   
-  field :twitter_status_created_at, :type => DateTime
   field :twitter_id
   field :followers_ids,  :type => Array
   field :followings_ids, :type => Array
   @@twitter_fields.each { |f| field :"twitter_#{f}" }
+  @@twitter_latest_tweet_fields.each { |f| field :"twitter_latest_tweet_#{f}" }
   
   def raw=(twitter_response)
     twitter_fields.each { |tf| send("twitter_#{tf}=", twitter_response.send(tf)) if twitter_response.include?(tf) }
-    self.twitter_status_created_at = twitter_response.try(:status).try(:created_at).try(:to_time)
+    twitter_latest_tweet_fields.each { |tf| send("twitter_latest_tweet_#{tf}=", twitter_response.status.send(tf)) if twitter_response.status && twitter_response.status.include?(tf) }
   end
   
   def friends_ids
     followers_ids & followings_ids
+  end
+
+  def no_following_followers_ids
+    followings_ids - followers_ids
   end
   
   def friends_size
