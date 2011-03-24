@@ -1273,11 +1273,11 @@ span.wpcf7-not-valid-tip {
 	width: 415px;
 }
 
-.signupform li input.zip {
-	width: 180px;
+.signupform li input.password {
+	width: 143px;
 }
 
-.signupform li input.phone {
+.signupform li input.password-confirmation {
 	width: 143px;
 }
 

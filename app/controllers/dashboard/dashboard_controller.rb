@@ -5,7 +5,7 @@ class Dashboard::DashboardController < LoggedController
   
   protected
   def check_rights!
-    redirect_to '/' unless current_user.admin?
+    redirect_to '/' unless current_user.admin? || current_user.authorized?
   end
   
   def current_twitter_user

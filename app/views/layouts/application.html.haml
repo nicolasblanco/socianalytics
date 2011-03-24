@@ -12,7 +12,7 @@
     = javascript_include_tag "easySlider1.5", "saas", "jquery.cookie.min", "saas.twitter"
     = csrf_meta_tag
     
-  %body.home.page.page-template-page-home-php
+  %body{ :class => yield(:body_class) }
     .header
       %div
         .center
@@ -27,8 +27,10 @@
                   %a{:href => "help.html"} Help
                 %li.menu-item
                   %a{:href => "contact-us.html"} Contact Us
+                %li.menu-item
+                  = link_to "Sign in", dashboard_root_path
           %h1#logo
-            %a{:href => "home.html"}
+            = link_to root_path do
               %img{:alt => "SaaS Theme II", :src => "/images/logo.png"}/
           .nav
             .menu-main-nav-container
@@ -40,7 +42,7 @@
                   %a{:href => "plans-pricing.html"}
                     %span Plans & Pricing
                 %li.menu-item
-                  %a{:href => "sign-up.html"}
+                  = link_to sign_up_path do
                     %span Sign Up!
     / div.header end
     / div.container start

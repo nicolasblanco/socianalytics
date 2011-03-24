@@ -5,7 +5,7 @@ class TwitterUser
   
   @@twitter_fields = %w(location profile_image_url screen_name friends_count followers_count)
   cattr_reader :twitter_fields
-
+  
   @@twitter_latest_tweet_fields = %w(created_at text)
   cattr_reader :twitter_latest_tweet_fields
   
@@ -18,6 +18,7 @@ class TwitterUser
   def raw=(twitter_response)
     twitter_fields.each { |tf| send("twitter_#{tf}=", twitter_response.send(tf)) if twitter_response.include?(tf) }
     twitter_latest_tweet_fields.each { |tf| send("twitter_latest_tweet_#{tf}=", twitter_response.status.send(tf)) if twitter_response.status && twitter_response.status.include?(tf) }
+    self.twitter_latest_tweet_created_at = (twitter_latest_tweet_created_at.try(:to_time) rescue nil)
   end
   
   def friends_ids
