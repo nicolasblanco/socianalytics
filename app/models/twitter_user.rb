@@ -10,8 +10,8 @@ class TwitterUser
   cattr_reader :twitter_latest_tweet_fields
   
   field :twitter_id
-  field :followers_ids,  :type => Array
-  field :followings_ids, :type => Array
+  field :followers_ids,  :type => Array, :default => []
+  field :followings_ids, :type => Array, :default => []
   @@twitter_fields.each { |f| field :"twitter_#{f}" }
   @@twitter_latest_tweet_fields.each { |f| field :"twitter_latest_tweet_#{f}" }
   
