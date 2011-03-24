@@ -100,10 +100,13 @@ Socianalytics::Application.routes.draw do
   resources :campaigns do
     get :tracker, :on => :member
   end
+
+  resource :sign_up
   
   devise_for :user, :controllers => { :sessions => "sessions" }
   
   resources :short_urls, :only => %w(create)
+  match '/sign_up' => "sign_up#show", :as => :sign_up
   
   #match '/dashboard' => "dashboards#show", :as => :user_root
   

@@ -7,6 +7,7 @@ class User
   #after_create :compute_new_user_data
 
   field :admin, :type => Boolean, :default => false, :accessible => false
+  field :authorized, :type => Boolean, :default => false, :accessible => false
   field :twitter_handle
   field :twitter_oauth_token
   field :twitter_oauth_secret
