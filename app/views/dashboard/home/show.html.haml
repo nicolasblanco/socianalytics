@@ -23,6 +23,7 @@
           chart: {
              renderTo: 'container',
              defaultSeriesType: 'line',
+             zoomType: 'x',
              marginRight: 130,
              marginBottom: 25
           },
@@ -60,6 +61,33 @@
              x: -10,
              y: 100,
              borderWidth: 0
+          },
+          plotOptions: {
+            area: {
+              fillColor: {
+                linearGradient: [0, 0, 0, 300],
+                stops: [
+                  [0, Highcharts.theme.colors[0]],
+                  [1, 'rgba(2,0,0,0)']
+                ]
+              },
+              lineWidth: 1,
+              marker: {
+                enabled: false,
+                states: {
+                  hover: {
+                    enabled: true,
+                    radius: 5
+                  }
+                }
+              },
+              shadow: false,
+              states: {
+                hover: {
+                  lineWidth: 1
+                }
+              }
+            }
           },
           series: [{
              name: 'Followers',
