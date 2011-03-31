@@ -39,6 +39,7 @@
              categories: #{js_array(current_twitter_user.stat_for(:twitter_followers_count).map { |s| I18n.l(s.updated_at) }, :strings => true)}
           },
           yAxis: {
+             allowDecimals: false,
              title: {
                 text: 'Nombre'
              },
