@@ -66,7 +66,12 @@ Socianalytics::Application.routes.draw do
       end
     end
 
-    resources :short_urls
+    resources :short_urls do
+      member do
+        get :live
+      end
+    end
+
     resources :stats do
       collection do
         post :update_twitter_user
