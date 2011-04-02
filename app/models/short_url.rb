@@ -6,7 +6,7 @@ class ShortUrl
   cattr_reader :valid_chars
   
   field :chunk
-  field :requests_counter_cache, :type => Integer
+  field :requests_counter_cache, :type => Integer, :default => 0
   
   referenced_in :user
   embeds_many :requests, :class_name => "ShortUrlRequest"
