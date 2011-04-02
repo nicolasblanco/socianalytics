@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.5'
 
 gem "bson_ext", "~> 1.2"
-gem 'mongoid', '2.0.0.rc.7'
+gem 'mongoid', '2.0.0'
 
 gem 'ruby_parser'
 gem 'hpricot'
@@ -15,7 +15,6 @@ gem 'mongoid_slug'
 gem 'dynamic_form'
 gem 'state_machine'
 gem "twitter", :git => "git://github.com/jnunemaker/twitter.git"
-gem 'state_machine-mongoid', :git => "http://github.com/lostboy/state_machine-mongoid.git"
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'bitly'
@@ -48,6 +47,4 @@ group :development, :test do
   gem 'webrat'
   gem 'hpricot'
   gem 'mongrel', '~> 1.1'
-  gem 'capistrano'
-  gem 'capistrano-ext'
 end
