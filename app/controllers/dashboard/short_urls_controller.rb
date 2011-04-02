@@ -17,7 +17,7 @@ class Dashboard::ShortUrlsController < Dashboard::DashboardController
     load_models
     respond_to do |format|
       format.html
-      format.json { render :json => @short_urls.map { |short_url| { :id => short_url.id, :clicks_count => short_url.requests.count } } }
+      format.json { render :json => @short_urls.map { |short_url| { :id => short_url.id, :clicks_count => short_url.requests_counter_cache } } }
     end
   end
 

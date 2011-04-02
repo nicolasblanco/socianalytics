@@ -17,7 +17,7 @@
           %td.author
             Clicks :
             = link_to [:dashboard, short_url] do
-              %span{ :id => "short-url-#{short_url.id}" }= short_url.requests.count
+              %span{ :id => "short-url-#{short_url.id}" }= short_url.requests_counter_cache
           %td.date
             %strong= l short_url.created_at
           %td
@@ -33,12 +33,14 @@
     
 
 :javascript
-  $(document).ready(function() {
-    setInterval(function() {
-      $.get("/dashboard/short_urls.json?page=#{params[:page] || 1}", function(data) {
-        $.each(data, function() {
-          $("#short-url-" + this.id).html(this.clicks_count);
-        });
+  function getClicksCount() {
+    $.get("/dashboard/short_urls.json?page=#{params[:page] || 1}", function(data) {
+      $.each(data, function() {
+        $("#short-url-" + this.id).html(this.clicks_count);
       });
-    }, 5000);
+    });
+  }
+
+  $(document).ready(function() {
+    setInterval(getClicksCount, 10000);
   });
