@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/jnunemaker/twitter.git
-  revision: 5cb5d7d84f693315a110aea62fbc695523758cb8
+  revision: 9539d9a84e39e1cff321a4f10cf3adda8f382447
   specs:
     twitter (1.2.0)
       faraday (~> 0.5.4)
@@ -15,16 +15,6 @@ GIT
       multi_json (~> 0.0.5)
       multi_xml (~> 0.2.0)
       simple_oauth (~> 0.1.4)
-
-GIT
-  remote: http://github.com/lostboy/state_machine-mongoid.git
-  revision: 9c207c6ed1879dfce82a658b1325cb6094268530
-  specs:
-    state_machine-mongoid (0.1.1)
-      activemodel (>= 3.0.0)
-      bson_ext (>= 1.0.4)
-      mongoid (>= 2.0.0.beta.16)
-      state_machine (>= 0.9.2)
 
 GEM
   remote: http://rubygems.org/
@@ -68,19 +58,6 @@ GEM
     bson (1.2.4)
     bson_ext (1.2.4)
     builder (2.1.2)
-    capistrano (2.5.20)
-      highline
-      highline
-      net-scp (>= 1.0.0)
-      net-scp
-      net-sftp
-      net-sftp (>= 2.0.0)
-      net-ssh (>= 2.0.14)
-      net-ssh
-      net-ssh-gateway
-      net-ssh-gateway (>= 1.0.0)
-    capistrano-ext (1.2.1)
-      capistrano (>= 1.0.0)
     capybara (0.4.1.2)
       celerity (>= 0.7.9)
       culerity (>= 0.2.4)
@@ -92,7 +69,7 @@ GEM
       xpath (~> 0.1.3)
     carrierwave (0.5.3)
       activesupport (~> 3.0)
-    celerity (0.8.8)
+    celerity (0.8.9)
     cgi_multipart_eof_fix (2.5.0)
     childprocess (0.1.8)
       ffi (~> 1.0.6)
@@ -112,11 +89,12 @@ GEM
       nokogiri (>= 1.4.4)
       rack-test (>= 0.5.7)
     culerity (0.2.15)
-    daemons (1.1.0)
+    daemons (1.1.2)
     database_cleaner (0.6.6)
-    devise (1.1.8)
+    devise (1.2.1)
       bcrypt-ruby (~> 2.1.2)
-      warden (~> 1.0.2)
+      orm_adapter (~> 0.0.3)
+      warden (~> 1.0.3)
     diff-lcs (1.1.2)
     dynamic_form (1.1.3)
     erubis (2.6.6)
@@ -144,8 +122,7 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     hashie (1.0.0)
-    highline (1.6.1)
-    hoptoad_notifier (2.4.8)
+    hoptoad_notifier (2.4.9)
       activesupport
       builder
     hpricot (0.8.4)
@@ -171,13 +148,13 @@ GEM
       subexec (~> 0.0.4)
     mongo (1.2.4)
       bson (>= 1.2.4)
-    mongoid (2.0.0.rc.7)
+    mongoid (2.0.0)
       activemodel (~> 3.0)
       mongo (~> 1.2)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
-    mongoid_slug (0.6.4)
-      mongoid (~> 2.0.0.rc.7)
+    mongoid_slug (0.7.1)
+      mongoid (~> 2.0.0)
       stringex (~> 1.2.0)
     mongrel (1.1.5)
       cgi_multipart_eof_fix (>= 2.4)
@@ -187,21 +164,15 @@ GEM
     multi_json (0.0.5)
     multi_xml (0.2.2)
     multipart-post (1.1.0)
-    net-scp (1.0.4)
-      net-ssh (>= 1.99.1)
-    net-sftp (2.0.5)
-      net-ssh (>= 2.0.9)
-    net-ssh (2.1.3)
-    net-ssh-gateway (1.0.1)
-      net-ssh (>= 1.99.1)
     nokogiri (1.4.4)
     oauth (0.4.4)
     oauth2 (0.1.1)
       faraday (~> 0.5.0)
       multi_json (~> 0.0.4)
+    orm_adapter (0.0.4)
     polyglot (0.3.1)
     rack (1.2.2)
-    rack-mount (0.6.13)
+    rack-mount (0.6.14)
       rack (>= 1.0.0)
     rack-test (0.5.7)
       rack (>= 1.0)
@@ -222,7 +193,7 @@ GEM
       thor (~> 0.14.4)
     rake (0.8.7)
     rcov (0.9.8)
-    redis (2.1.1)
+    redis (2.2.0)
     redis-namespace (0.8.0)
       redis (< 3.0.0)
     resque (1.9.10)
@@ -266,7 +237,7 @@ GEM
     sinatra (1.2.1)
       rack (~> 1.1)
       tilt (< 2.0, >= 1.2.2)
-    state_machine (0.10.0)
+    state_machine (0.10.2)
     stringex (1.2.1)
     subexec (0.0.4)
     term-ansicolor (1.0.5)
@@ -274,7 +245,7 @@ GEM
     tilt (1.2.2)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.25)
+    tzinfo (0.3.26)
     vegas (0.1.8)
       rack (>= 1.0.0)
     warden (1.0.3)
@@ -296,8 +267,6 @@ DEPENDENCIES
   awesome_print
   bitly
   bson_ext (~> 1.2)
-  capistrano
-  capistrano-ext
   capybara
   carrierwave
   compass
@@ -315,7 +284,7 @@ DEPENDENCIES
   launchy
   mini_fb
   mini_magick
-  mongoid (= 2.0.0.rc.7)
+  mongoid (= 2.0.0)
   mongoid_slug
   mongrel (~> 1.1)
   nokogiri
@@ -331,7 +300,6 @@ DEPENDENCIES
   ruby_parser
   shoulda
   state_machine
-  state_machine-mongoid!
   twitter!
   web-app-theme (~> 0.6.2)
   webrat
