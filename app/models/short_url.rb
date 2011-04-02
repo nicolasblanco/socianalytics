@@ -6,6 +6,7 @@ class ShortUrl
   cattr_reader :valid_chars
   
   field :chunk
+  field :requests_counter_cache, :type => Integer
   
   referenced_in :user
   embeds_many :requests, :class_name => "ShortUrlRequest"
@@ -34,6 +35,7 @@ class ShortUrl
   
   def add_request(request)
     requests.create(:referrer => request.referrer, :user_agent => request.user_agent)
+    inc(:requests_counter_cache, 1)
   end
   
   def url
