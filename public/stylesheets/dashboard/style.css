@@ -991,3 +991,8 @@ ul.list-view .unit-info p {
 	list-style: none;
 	display: inline;
 	}
+
+.profile-picture {
+    width: 48px;
+    height: 48px;
+}

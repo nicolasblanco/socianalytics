@@ -11,7 +11,7 @@
     %tbody
       - @followers.each_with_index do |follower, index|
         %tr{ table_tr_attrs(index) }
-          %td= image_tag(follower.twitter_profile_image_url)
+          %td= image_tag follower.twitter_profile_image_url, :class => "profile-picture"
           %td= link_to follower.twitter_screen_name, "http://twitter.com/#{follower.twitter_screen_name}"
           %td= follower.twitter_followers_count
           %td= follower.twitter_latest_tweet_text
