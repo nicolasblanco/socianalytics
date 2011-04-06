@@ -8,7 +8,7 @@
         %ul
           %li
             - if current_twitter_user
-              = image_tag current_twitter_user.twitter_profile_image_url
+              = image_tag current_twitter_user.twitter_profile_image_url, :class => "profile-picture"
               #{current_twitter_user.twitter_screen_name}
               &nbsp;
             = link_to "Mettre à jour maintenant", update_twitter_user_dashboard_stats_path, :method => :post
