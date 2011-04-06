@@ -28,7 +28,7 @@
              marginBottom: 25
           },
           title: {
-             text: 'Followings, followers et friends',
+             text: 'Followers',
              x: -20 //center
           },
           subtitle: {
@@ -40,6 +40,7 @@
           },
           yAxis: {
              allowDecimals: false,
+             min: 0,
              title: {
                 text: 'Nombre'
              },
@@ -86,14 +87,6 @@
           series: [{
              name: 'Followers',
              data: #{js_array(current_twitter_user.stat_for(:twitter_followers_count).map(&:value))}
-          },
-          {
-             name: 'Followings',
-             data: #{js_array(current_twitter_user.stat_for(:twitter_friends_count).map(&:value))}
-          },
-          {
-             name: 'Friends',
-             data: #{js_array(current_twitter_user.stat_for(:friends_size).map(&:value))}
           }
           ]
        });

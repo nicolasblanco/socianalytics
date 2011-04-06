@@ -11,6 +11,10 @@ class Dashboard::StatsController < Dashboard::DashboardController
   end
   
   public
+  def basic
+    
+  end
+  
   def update_twitter_user
     Resque.enqueue(TwitterUserJob, current_user.id, current_user.twitter_main_id, true)
     
