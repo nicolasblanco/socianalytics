@@ -1,0 +1,19 @@
+- page_title "Friends"
+
+.data-table
+  %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+    %thead
+      %tr
+        %th Picture
+        %th Name
+        %th Followers count
+        %th Latest tweet
+    %tbody
+      - @followers.each_with_index do |follower, index|
+        %tr{ table_tr_attrs(index) }
+          %td= image_tag(follower.twitter_profile_image_url)
+          %td= link_to follower.twitter_screen_name, "http://twitter.com/#{follower.twitter_screen_name}"
+          %td= follower.twitter_followers_count
+          %td= follower.twitter_latest_tweet_text
+
+= will_paginate @followers

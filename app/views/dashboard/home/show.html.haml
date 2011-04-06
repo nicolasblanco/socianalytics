@@ -1,0 +1,102 @@
+- page_title "Tableau de bord - Bienvenue !"
+
+.page-content
+  .notes-detail
+    .close-note
+    .shadow
+      %div
+        %ul
+          %li
+            - if current_twitter_user
+              = image_tag current_twitter_user.twitter_profile_image_url
+              #{current_twitter_user.twitter_screen_name}
+              &nbsp;
+            = link_to "Mettre à jour maintenant", update_twitter_user_dashboard_stats_path, :method => :post
+  
+  #container.highcharts-container{:style => "height:410px; width: 800px; margin: 0 auto; clear:both"}
+
+- if current_twitter_user
+  :javascript
+    var chart;
+    $(document).ready(function() {
+       chart = new Highcharts.Chart({
+          chart: {
+             renderTo: 'container',
+             defaultSeriesType: 'line',
+             zoomType: 'x',
+             marginRight: 130,
+             marginBottom: 25
+          },
+          title: {
+             text: 'Followings, followers et friends',
+             x: -20 //center
+          },
+          subtitle: {
+             text: 'Account : #{current_twitter_user.twitter_screen_name}',
+             x: -20
+          },
+          xAxis: {
+             categories: #{js_array(current_twitter_user.stat_for(:twitter_followers_count).map { |s| I18n.l(s.updated_at) }, :strings => true)}
+          },
+          yAxis: {
+             allowDecimals: false,
+             title: {
+                text: 'Nombre'
+             },
+             plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+             }]
+          },
+          tooltip: {
+             formatter: function() {
+                       return '<b>'+ this.series.name +'</b><br/>'+
+                   this.x +': '+ this.y;
+             }
+          },
+          legend: {
+             layout: 'vertical',
+             align: 'right',
+             verticalAlign: 'top',
+             x: -10,
+             y: 100,
+             borderWidth: 0
+          },
+          plotOptions: {
+            line: {
+              lineWidth: 1,
+              marker: {
+                enabled: false,
+                states: {
+                  hover: {
+                    enabled: true,
+                    radius: 5
+                  }
+                }
+              },
+              shadow: false,
+              states: {
+                hover: {
+                  lineWidth: 1
+                }
+              }
+            }
+          },
+          series: [{
+             name: 'Followers',
+             data: #{js_array(current_twitter_user.stat_for(:twitter_followers_count).map(&:value))}
+          },
+          {
+             name: 'Followings',
+             data: #{js_array(current_twitter_user.stat_for(:twitter_friends_count).map(&:value))}
+          },
+          {
+             name: 'Friends',
+             data: #{js_array(current_twitter_user.stat_for(:friends_size).map(&:value))}
+          }
+          ]
+       });
+    
+    
+    });

@@ -60,7 +60,38 @@ Socianalytics::Application.routes.draw do
   # See how all your routes lay out with "rake routes"
   
   namespace :dashboard do
-    resources :short_urls
+    resources :blocks, :only => %w() do
+      collection do
+        post :batch_create
+      end
+    end
+
+    resources :short_urls do
+      member do
+        get :live
+      end
+    end
+
+    resources :stats do
+      collection do
+        post :update_twitter_user
+        get :popular_followers
+        get :spam_followers
+        get :friends
+        get :no_following_followers
+      end
+    end
+    resource :profile do
+      member do
+        post :twitter_link
+        delete :destroy_twitter_link
+        get :twitter_callback
+        
+        post :facebook_link
+        get :facebook_callback
+      end
+    end
+    root :to => "home#show"
   end
   
   match "settings" => "settings#show"
@@ -74,10 +105,13 @@ Socianalytics::Application.routes.draw do
   resources :campaigns do
     get :tracker, :on => :member
   end
+
+  resource :sign_up
   
-  devise_for :user
+  devise_for :user, :controllers => { :sessions => "sessions" }
   
   resources :short_urls, :only => %w(create)
+  match '/sign_up' => "sign_up#show", :as => :sign_up
   
   #match '/dashboard' => "dashboards#show", :as => :user_root
   

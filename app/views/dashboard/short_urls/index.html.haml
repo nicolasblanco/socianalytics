@@ -16,10 +16,12 @@
               = link_to redirection.full_url, redirection.full_url
           %td.author
             Clicks :
-            = link_to short_url.requests.count, [:dashboard, short_url]
+            = link_to [:dashboard, short_url] do
+              %span{ :id => "short-url-#{short_url.id}" }= short_url.requests_counter_cache
           %td.date
             %strong= l short_url.created_at
           %td
+            = link_to "live", [:live, :dashboard, short_url]
             = link_to "destroy", [:dashboard, short_url], :method => :delete, :confirm => "Are you sure you want to destroy this short url?"
 
 = will_paginate @short_urls
@@ -29,3 +31,16 @@
 .form-create
   = render "form"
     
+
+:javascript
+  function getClicksCount() {
+    $.get("/dashboard/short_urls.json?page=#{params[:page] || 1}", function(data) {
+      $.each(data, function() {
+        $("#short-url-" + this.id).html(this.clicks_count);
+      });
+    });
+  }
+
+  $(document).ready(function() {
+    setInterval(getClicksCount, 10000);
+  });

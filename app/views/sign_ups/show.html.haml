@@ -1,0 +1,73 @@
+.center
+  = form_for @user, :url => sign_up_path, :html => { :class => "signupform" } do |f|
+    %h5
+      Pricing Plan
+      %em (* Indicates required information)
+    %ul
+      %li
+        %label.plan{:for => "plan"} Plan:
+        %select#plan.plan{:name => "plan"}
+          %option{:value => "Basic"} Trial
+        %em *
+    %h5 Informations
+    %ul
+      /%li
+      /  %label{:for => "firstName"} First Name:
+      /  %input#firstName{:maxlength => "50", :name => "firstName", :type => "text"}/
+      /  %em *
+      /  %label.mi{:for => "middleName"} MI:
+      /  %input#middleName.mi{:maxlength => "10", :name => "middlename", :type => "text"}/
+      /%li
+      /  %label{:for => "lastName"} Last Name:
+      /  %input#lastName{:maxlength => "50", :name => "lastName", :type => "text"}/
+      /  %em *
+      /%li
+      /  %label{:for => "company"} Company Name:
+      /  %input#company.company{:maxlength => "100", :name => "company", :type => "text"}/
+      /  %em *
+      %li
+        %label{:for => "email"} Email :
+        = f.text_field :email, :type => :email, :id => "email"
+        %em *
+      %li
+        %label{:for => "promo-code"} Code d'accès :
+        = text_field_tag "promo_code", "", :id => "promo-code"
+        %em *
+      /%li
+      /  %label{:for => "city"} City:
+      /  %input#city.city{:maxlength => "50", :name => "city", :type => "text"}/
+      /  %em *
+      %li
+        %label{:for => "password"} Mot de passe :
+        = f.password_field :password, :id => "password", :class => "password"
+        %em *
+        %label{:for => "password-confirmation"} Confirmation :
+        = f.password_field :password_confirmation, :id => "password-confirmation", :class => "password-confirmation"
+        %em *
+
+    /%h5 Secure Payment Info
+    %ul
+      /  %li
+      /    %label{:for => "ccType"} Credit Card:
+      /    %select#ccType.cctype{:name => "ccType"}
+      /      %option{:value => "Visa"} Visa
+      /    %em *
+      /    %img{:alt => "Credit Card", :src => "images/order-cc.png"}/
+      /  %li
+      /    %label{:for => "ccNumber"} Card Number:
+      /    %input#ccNumber.ccnumber{:maxlength => "16", :name => "ccNumber", :type => "text"}/
+      /    %em *
+      /    %label.expires{:for => "ccExpMonth"} Expires:
+      /    %input#ccExpMonth.expires{:maxlength => "2", :name => "ccExpMonth", :type => "text"}/
+      /    %span /
+      /    %input#ccExpYear.expires{:maxlength => "4", :name => "ccExpYear", :type => "text"}/
+      /    %em *
+      /  %li
+      /    %label{:for => "ccCvv"} CVV:
+      /    %input#ccCvv.cvv{:maxlength => "4", :name => "ccCvv", :type => "text"}/
+      /    %em *
+      /    %img{:alt => "CVV", :src => "images/order-cvv.png"}/
+      %li.a-center
+        %button{:type => "submit"}
+          %span.button
+            %span Sign Up!

@@ -1,4 +1,11 @@
-desc "This task is called by the Heroku cron add-on"
-task :cron => :environment do
-  User.compute_data
+namespace :cron do
+  task :daily => :environment do
+    User.all.each do |user|
+      %w(stats_twitter_popular_followers stats_twitter_follower_counts).each do |stat_name|
+        stat = user.send(stat_name).build
+        stat.execute
+        stat.save
+      end
+    end
+  end
 end
