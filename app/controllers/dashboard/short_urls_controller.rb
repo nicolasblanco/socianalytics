@@ -7,6 +7,7 @@ class Dashboard::ShortUrlsController < Dashboard::DashboardController
   end
 
   def load_models
+    @twitter_status = TwitterStatus.new(:message => "#{ShortUrl.last.url} >")
     @short_url.redirections.build if @short_url.redirections.empty?
     @short_urls = current_user.short_urls.desc(:created_at).paginate(:page => params[:page], :per_page => 10)
   end
@@ -18,6 +19,16 @@ class Dashboard::ShortUrlsController < Dashboard::DashboardController
     respond_to do |format|
       format.html
       format.json { render :json => @short_urls.map { |short_url| { :id => short_url.id, :clicks_count => short_url.requests_counter_cache } } }
+    end
+  end
+
+  def update_twitter_status
+    @twitter_status = TwitterStatus.new(params[:twitter_status])
+    if @twitter_status.valid? && @twitter_status.update_for_user(current_user)
+      redirect_to dashboard_short_urls_path, :notice => "Status Twitter mis à jour avec succès !"
+    else
+      load_models
+      render 'index'
     end
   end
 

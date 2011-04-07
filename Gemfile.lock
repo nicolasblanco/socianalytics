@@ -6,14 +6,15 @@ GIT
 
 GIT
   remote: git://github.com/jnunemaker/twitter.git
-  revision: 9539d9a84e39e1cff321a4f10cf3adda8f382447
+  revision: e7cc40c81ea7ef7996adcf391388aa405d73af0f
   specs:
-    twitter (1.2.0)
-      faraday (~> 0.5.4)
-      faraday_middleware (~> 0.3.2)
+    twitter (1.3.0)
+      faraday (~> 0.6.0)
+      faraday_middleware (~> 0.6.3)
       hashie (~> 1.0.0)
       multi_json (~> 0.0.5)
       multi_xml (~> 0.2.0)
+      rash (~> 0.3.0)
       simple_oauth (~> 0.1.4)
 
 GEM
@@ -50,13 +51,14 @@ GEM
     addressable (2.2.4)
     arel (2.0.9)
     awesome_print (0.3.2)
+    basic_active_model (1.0.0)
     bcrypt-ruby (2.1.4)
     bitly (0.6.1)
       crack (>= 0.1.4)
       httparty (>= 0.5.2)
       oauth2 (>= 0.1.1)
-    bson (1.2.4)
-    bson_ext (1.2.4)
+    bson (1.3.0)
+    bson_ext (1.3.0)
     builder (2.1.2)
     capybara (0.4.1.2)
       celerity (>= 0.7.9)
@@ -84,7 +86,7 @@ GEM
       gherkin (>= 2.3.5)
       json (>= 1.4.6)
       term-ansicolor (>= 1.0.5)
-    cucumber-rails (0.4.0)
+    cucumber-rails (0.4.1)
       cucumber (>= 0.10.1)
       nokogiri (>= 1.4.4)
       rack-test (>= 0.5.7)
@@ -103,12 +105,12 @@ GEM
     factory_girl_rails (1.0.1)
       factory_girl (~> 1.3)
       railties (>= 3.0.0)
-    faraday (0.5.7)
+    faraday (0.6.0)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
       rack (< 2, >= 1.1.0)
-    faraday_middleware (0.3.2)
-      faraday (~> 0.5.4)
+    faraday_middleware (0.6.3)
+      faraday (~> 0.6.0)
     fastthread (1.0.7)
     ffi (1.0.7)
       rake (>= 0.8.7)
@@ -146,8 +148,8 @@ GEM
       rest-client
     mini_magick (3.2)
       subexec (~> 0.0.4)
-    mongo (1.2.4)
-      bson (>= 1.2.4)
+    mongo (1.3.0)
+      bson (>= 1.3.0)
     mongoid (2.0.0)
       activemodel (~> 3.0)
       mongo (~> 1.2)
@@ -166,8 +168,8 @@ GEM
     multipart-post (1.1.0)
     nokogiri (1.4.4)
     oauth (0.4.4)
-    oauth2 (0.1.1)
-      faraday (~> 0.5.0)
+    oauth2 (0.2.0)
+      faraday (~> 0.6.0)
       multi_json (~> 0.0.4)
     orm_adapter (0.0.4)
     polyglot (0.3.1)
@@ -192,6 +194,8 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    rash (0.3.0)
+      hashie (~> 1.0.0)
     rcov (0.9.8)
     redis (2.2.0)
     redis-namespace (0.8.0)
@@ -265,6 +269,7 @@ PLATFORMS
 DEPENDENCIES
   SystemTimer
   awesome_print
+  basic_active_model
   bitly
   bson_ext (~> 1.2)
   capybara

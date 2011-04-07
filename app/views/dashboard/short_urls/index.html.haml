@@ -1,5 +1,12 @@
 - page_title "ixi.me URL Shortener"
 
+.form-create
+  = render "form_twitter"
+
+= error_messages_for @short_url
+.form-create
+  = render "form"
+
 .data-table
   %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
     %thead
@@ -21,17 +28,13 @@
           %td.date
             %strong= l short_url.created_at
           %td
+            = link_to "tweet", "#", :class => "tweet-copy", :"data-url" => short_url.url
             = link_to "live", [:live, :dashboard, short_url]
             = link_to "destroy", [:dashboard, short_url], :method => :delete, :confirm => "Are you sure you want to destroy this short url?"
 
 = will_paginate @short_urls
 %br
-
-= error_messages_for @short_url
-.form-create
-  = render "form"
     
-
 :javascript
   function getClicksCount() {
     $.get("/dashboard/short_urls.json?page=#{params[:page] || 1}", function(data) {
@@ -42,5 +45,12 @@
   }
 
   $(document).ready(function() {
+    $(".tweet-copy").click(function() {
+      $("#twitter_status_message").val($(this).attr("data-url") + " > ");
+      $("#twitter_status_message").focus();
+
+      return false;
+    });
+
     setInterval(getClicksCount, 10000);
   });
