@@ -26,6 +26,7 @@ gem 'SystemTimer'
 gem 'resque'
 gem 'resque-restriction'
 gem 'resque-lock', :git => 'git://github.com/defunkt/resque-lock.git'
+gem 'basic_active_model'
 #gem 'resque-loner', :git => 'git://github.com/jayniz/resque-loner.git'
 
 group :development, :test do
