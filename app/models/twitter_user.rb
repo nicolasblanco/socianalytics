@@ -14,6 +14,8 @@ class TwitterUser
   field :followings_ids, :type => Array, :default => []
   @@twitter_fields.each { |f| field :"twitter_#{f}" }
   @@twitter_latest_tweet_fields.each { |f| field :"twitter_latest_tweet_#{f}" }
+
+  index :twitter_followers_count
   
   def raw=(twitter_response)
     twitter_fields.each { |tf| send("twitter_#{tf}=", twitter_response.send(tf)) if twitter_response.include?(tf) }
