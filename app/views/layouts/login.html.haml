@@ -1,20 +1,14 @@
 !!!
-%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+%html
   %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta(charset="utf-8")
+    %meta(name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1")
     %title Socianalytics
-    = stylesheet_link_tag "dashboard/style"
-    = javascript_include_tag :defaults
-  %body.pageLogin
-    .login-box
-      .head Socianalytics
-      .body
+    %link(rel="stylesheet"  href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css")
+    %script(type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js")
+    %script(type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js")
+
+  %body
+    %div(data-role="page" data-theme="b" id="jqm-home")
+      %div(data-role="content")
         = yield
-      .foot
-
-
-:javascript
-  $(document).ready(function() {
-    $("#user_email").focus();
-  });
-  
