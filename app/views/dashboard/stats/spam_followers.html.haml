@@ -1,25 +1,17 @@
 - page_title "Spam followers"
 
-.data-table
-  = form_tag batch_create_dashboard_blocks_path, :method => :post do
-    %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
-      %thead
-        %tr
-          %th Select
-          %th Picture
-          %th Name
-          %th Followers count
-          %th Followings count
-          %th Latest tweet
-      %tbody
-        - @followers.each_with_index do |follower, index|
-          %tr{ table_tr_attrs(index) }
-            %td= check_box_tag "twitter_ids[]", follower.twitter_id
-            %td= image_tag follower.twitter_profile_image_url, :class => "profile-picture"
-            %td= link_to follower.twitter_screen_name, "http://twitter.com/#{follower.twitter_screen_name}"
-            %td= follower.twitter_followers_count
-            %td= follower.twitter_friends_count
-            %td= follower.twitter_latest_tweet_text
+= form_tag batch_create_dashboard_blocks_path, :method => :post do
+  %ul(data-role="listview" data-inset="true")
+    %li(data-role="list-divider") Followers populaires
+    
+    - @followers.each do |follower|
+      %li
+        = check_box_tag "twitter_ids[]", follower.twitter_id
+        = link_to "http://twitter.com/#{follower.twitter_screen_name}" do
+          = image_tag follower.twitter_profile_image_url, :class => "profile-picture"
+          %h3= follower.twitter_screen_name
+          %p= follower.twitter_latest_tweet_text
+          %span{ :class => "ui-li-count" }= follower.twitter_followers_count
     
     = submit_tag "Block selected"
     

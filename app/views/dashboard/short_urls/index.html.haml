@@ -1,39 +1,51 @@
 - page_title "ixi.me URL Shortener"
 
-.form-create
-  = render "form_twitter"
+- content_for :footer do
+  %a(href="#twitter-dialog" data-role="button" data-icon="star" data-inline="true" data-transition="pop") Twitter
+  %a(href="#add-url-dialog" data-role="button" data-icon="plus" data-inline="true" data-transition="pop") Ajouter
 
-= error_messages_for @short_url
-.form-create
-  = render "form"
+- content_for :other_pages do
+  #twitter-dialog(data-role="page")
+    %div(data-role="header" data-position="inline")
+      %h1 Twitter
+    %div(data-role="content")
+      %h3 Twitter
 
-.data-table
-  %table{:border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
-    %thead
-      %tr
-        %th{:colspan => "3"} Active URLs
-    %tbody
-      - @short_urls.each_with_index do |short_url, index|
-        %tr{ table_tr_attrs(index) }
-          %td
-            %label.label.ticket /#{short_url.chunk}
-            = clippy(short_url.url, index.odd? ? "#f2f7f9" : "#FFFFFF")
-            %br
-            - short_url.redirections.each do |redirection|
-              = link_to redirection.full_url, redirection.full_url
-          %td.author
-            Clicks :
-            = link_to [:dashboard, short_url] do
-              %span{ :id => "short-url-#{short_url.id}" }= short_url.requests_counter_cache
-          %td.date
-            %strong= l short_url.created_at
-          %td
-            = link_to "tweet", "#", :class => "tweet-copy", :"data-url" => short_url.url
-            = link_to "live", [:live, :dashboard, short_url]
-            = link_to "destroy", [:dashboard, short_url], :method => :delete, :confirm => "Are you sure you want to destroy this short url?"
+      = form_for @twitter_status, :url => update_twitter_status_dashboard_short_urls_path do |f|
+        %div(data-role="fieldcontain")
+          = f.label :message
+          = f.text_area :message, :size => "90x5"
+
+        %button(type="submit" data-theme="a") Twitter !
+
+  #add-url-dialog(data-role="page")
+    %div(data-role="header" data-position="inline")
+      %h1 Ajouter
+    %div(data-role="content")
+      %h3 Ajouter une redirection
+
+      = form_for [:dashboard, @short_url] do |f|
+        %div(data-role="fieldcontain")
+          = f.label :chunk
+          = f.text_field :chunk
+        
+        = f.fields_for :redirections do |redirection_fields|
+          = render "redirection_fields", :f => redirection_fields
+
+        %button(type="submit" data-theme="a") Ajouter
+
+%ul(data-role="listview" data-inset="true" data-split-icon="delete" data-split-theme="d")
+  %li(data-role="list-divider") Adresses actives
+
+  - @short_urls.each do |short_url|
+    %li
+      = link_to [:dashboard, short_url], :"data-ajax" => false do
+        %h3= short_url.url
+        %p= short_url.redirections.map(&:full_url).join(", ")
+        %span{ :class => "ui-li-count", :id => "short-url-#{short_url.id}" }= short_url.requests_counter_cache
+      = link_to "Delete", [:dashboard, short_url], :method => :delete
 
 = will_paginate @short_urls
-%br
     
 :javascript
   function getClicksCount() {

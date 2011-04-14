@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Dashboard::DashboardController < LoggedController
   layout 'dashboard'
   before_filter :check_rights!

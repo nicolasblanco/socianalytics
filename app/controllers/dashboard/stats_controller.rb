@@ -1,4 +1,4 @@
-
+# encoding: utf-8
 class Dashboard::StatsController < Dashboard::DashboardController
   before_filter :check_link
   before_filter :require_twitter_user!, :except => %w(update_twitter_user)

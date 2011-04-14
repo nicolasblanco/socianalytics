@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SettingsController < LoggedController
   def facebook_session
     access_token_hash = MiniFB.oauth_access_token(FacebookConfig.application_id, facebook_session_settings_url, FacebookConfig.application_secret, params[:code])

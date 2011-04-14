@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CampaignsController < LoggedController
 
   before_filter :load_campaign, :only => %w(edit update destroy show tracker)

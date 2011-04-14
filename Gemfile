@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.6'
 
 gem "bson_ext", "~> 1.2"
 gem 'mongoid', '2.0.0'
@@ -22,7 +22,6 @@ gem 'mini_fb'
 gem 'json'
 gem 'compass'
 gem 'oauth'
-gem 'SystemTimer'
 gem 'resque'
 gem 'resque-restriction'
 gem 'resque-lock', :git => 'git://github.com/defunkt/resque-lock.git'
@@ -38,7 +37,7 @@ group :development, :test do
   gem "rspec-rails", "~> 2.0"
   gem "factory_girl_rails"
   gem "shoulda"
-  gem "ruby-debug"
+  gem "ruby-debug19"
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'
@@ -47,5 +46,4 @@ group :development, :test do
   gem 'nokogiri'
   gem 'webrat'
   gem 'hpricot'
-  gem 'mongrel', '~> 1.1'
 end

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Dashboard::ProfilesController < Dashboard::DashboardController
   before_filter :load_twitter_oauth, :only => %w(twitter_link twitter_callback)
   
