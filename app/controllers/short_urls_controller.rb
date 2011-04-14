@@ -1,3 +1,4 @@
+# encoding: utf-8
 class ShortUrlsController < ApplicationController
   layout 'url_shortener'
   before_filter :authenticate_user!, :only => %w(create)

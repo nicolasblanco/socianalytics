@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Dashboard::BlocksController < Dashboard::DashboardController
   def batch_create
     if params[:twitter_ids].present?

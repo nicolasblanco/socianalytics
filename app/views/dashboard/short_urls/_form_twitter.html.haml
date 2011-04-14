@@ -1,11 +1,7 @@
 = form_for @twitter_status, :url => update_twitter_status_dashboard_short_urls_path do |f|
-  %div{:style => "margin:0;padding:0"}
-  %h3.title Tweet
-  %ul
-    %li
-      = f.label :message
-      .input-field
-        = f.text_area :message, :size => "90x5"
+  %div(data-role="fieldcontain")
+    = f.label :message
+    = f.text_area :message, :size => "90x5"
 
   = f.submit "Tweet!"
   

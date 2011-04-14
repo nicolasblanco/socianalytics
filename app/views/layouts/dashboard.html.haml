@@ -1,134 +1,26 @@
 !!!
-%html{ html_attrs }
+%html
   %head
-    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
-    %title Socianalytics - Dashboard
-    
-    = stylesheet_link_tag "dashboard/style"
-    
-    = javascript_include_tag :defaults
+    %meta(charset="utf-8")
+    %meta(name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1")
+    %title Socianalytics
+    %link(rel="stylesheet"  href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css")
+    %script(type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js")
+    %script(type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js")
+    = javascript_include_tag "rails"
     = javascript_include_tag "highcharts", "highcharts-themes/gray"
-    = javascript_include_tag "dashboard"
-    = csrf_meta_tag
     
-  %body
-    .wrapper
-      .outline
-        .header
-          .top
-            %h1.logo
-              = link_to image_tag("dashboard/logo.png"), dashboard_root_path
-            .property_selector
-              %span Sélectionnez une vue
-              .menu
-                %ul
-                  %li= link_to "URL shortener", [:dashboard, :short_urls]
-                  %li= link_to "Graphiques", [:basic, :dashboard, :stats]
-                  %li= link_to "Followers populaires", [:popular_followers, :dashboard, :stats]
-                  %li= link_to "Amis", [:friends, :dashboard, :stats]
-                  %li= link_to "No-following followers", [:no_following_followers, :dashboard, :stats]
-                  %li= link_to "Followers spam", [:spam_followers, :dashboard, :stats]
+    = csrf_meta_tag
 
-                  /%li
-                  /  %a{:href => "view1.html"} View 1
-                  /%li
-                  /  %a{:href => "view2.html"} View 2
-                  /%li
-                  /  %a{:href => "view3.html"} View 3
-                  /%li
-                  /  %a{:href => "view4.html"} View 4
-                  /%li
-                  /  %a{:href => "people.html"} People View
-                  /%li
-                  /  %a{:href => "view-SubNav.html"} View with sub nav
-                  /%li
-                  /  %a{:href => "single.html"} Single Page
-                  /%li
-                  /  %a{:href => "formelements.html"} Form Elements
-                  /%li
-                  /  %a{:href => "buttons.html"} Buttons
-            / #progerty_selector end
-            .account_box
-              Logged in as #{current_user.email}
-              = link_to [:dashboard, :profile] do
-                %span My Profile
-              = link_to [:destroy, :user_session] do
-                %span Logout
-              %a{:href => "#"}
-                %span Help
-          / div.top end
-          .navbar
-            %h1 Socianalytics
-            /%ul
-            /  %li.current
-            /    %a{:href => ""}
-            /      %span
-            /        %img{:alt => "icon", :src => "/images/dashboard/icon-home.gif"}>/
-            /        Button 1
-            /  %li
-            /    %a{:href => ""}
-            /      %span
-            /        %img{:alt => "icon", :src => "/images/dashboard/icon-ticket.gif"}>/
-            /        Button 2
-            /  %li
-            /    %a{:href => ""}
-            /      %span
-            /        %img{:alt => "icon", :src => "/images/dashboard/icon-people.gif"}>/
-            /        Button 3
-            /  %li.last
-            /    %a{:href => ""}
-            /      %span
-            /        %img{:alt => "icon", :src => "/images/dashboard/icon-settings.gif"}>/
-            /        Button 4
-          / div.navbar end
-        / div.header end
-        .container
-          .sidebar
-            .search-box
-              %form{:action => ""}
-                .input-box
-                  %input.search-input{:name => "", :type => "text"}/
-                %input.searchButton{:name => "", :type => "submit", :value => " "}/
-            .property-nav
-              /%button.button Create
-              /%dl
-              /  %dt Sub List
-              /  %dd
-              /    %ul
-              /      %li
-              /        %a{:href => "#"} Sub List 1
-              /      %li
-              /        %a{:href => "#"} Sub List 2
-              /      %li
-              /        %a{:href => "#"} Sub List 3
-          / div.sidebar end
-          .main
-            .page-head
-              %h3= yield :page_title
-            .page-content
-              - if flash[:notice]
-                #flash
-                  .flash
-                    .notice= flash[:notice]
-              
-              = yield
-            
-    .footer
-      .footerlogo
-        %img{:alt => "Company Name", :src => "/images/dashboard/logo.png"}/
-      #footer-links
-        %ul
-          %li
-            %a{:href => "#"} Help &amp; Support
-          %li
-            %a{:href => "#"} Link
-          %li
-            %a{:href => "#"} Forums
-          %li
-            %a{:href => "#"} Privacy Policy
-          %li
-            %a{:href => "#"} Terms of Use
-        %p
-          Socianalytics
-          by Nicolas Blanco &amp; Laurent Matthieu Blanco
-    / div.footer end
+  %body
+    %div(data-role="page" data-theme="b" id="home")
+      %div(data-role="header")
+        %h1 Socianalytics Dashboard
+      %div(data-role="content")
+        = yield
+      
+      - if content_for?(:footer)
+        %div(data-role="footer")
+          = yield :footer
+    
+    = yield :other_pages

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Admin::AdminController < ApplicationController
   
   before_filter :verify_admin_rights

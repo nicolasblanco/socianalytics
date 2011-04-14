@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Dashboard::ShortUrlsController < Dashboard::DashboardController
   before_filter :load_model, :only => %w(show destroy live)
   
@@ -7,7 +8,7 @@ class Dashboard::ShortUrlsController < Dashboard::DashboardController
   end
 
   def load_models
-    @twitter_status = TwitterStatus.new(:message => "#{current_user.short_urls.last.url} >")
+    @twitter_status = TwitterStatus.new(:message => "#{current_user.short_urls.any? ? current_user.short_urls.last.url : ''} >")
     @short_url.redirections.build if @short_url.redirections.empty?
     @short_urls = current_user.short_urls.desc(:created_at).paginate(:page => params[:page], :per_page => 10)
   end
@@ -20,6 +21,10 @@ class Dashboard::ShortUrlsController < Dashboard::DashboardController
       format.html
       format.json { render :json => @short_urls.map { |short_url| { :id => short_url.id, :clicks_count => short_url.requests_counter_cache } } }
     end
+  end
+
+  def show
+    @twitter_status = TwitterStatus.new(:message => "#{@short_url.url} >")
   end
 
   def update_twitter_status

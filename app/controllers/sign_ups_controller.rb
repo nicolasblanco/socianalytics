@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SignUpsController < ApplicationController
   def show
     @user = User.new
