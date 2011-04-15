@@ -32,6 +32,8 @@ class User
          
   attr_accessible :email, :password, :password_confirmation, :remember_me, :facebook_page_id
   
+  scope :linked_to_twitter, where(:twitter_main_id.exists => true)
+  
   def self.find_by_twitter_handle(handle)
     first(:conditions => { :twitter_handle => handle })
   end
@@ -45,6 +47,8 @@ class User
   end
   
   def twitter_client
+    return unless twitter_oauth_token.present? && twitter_oauth_secret.present?
+    
     @twitter_client ||= begin
       Twitter::Client.new({ :oauth_token => twitter_oauth_token, :oauth_token_secret => twitter_oauth_secret })
     end
