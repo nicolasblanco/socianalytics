@@ -39,3 +39,28 @@ God.watch do |w|
     end
   end
 end
+
+# Resque-web monitoring
+#
+%w{5678}.each do |port|
+  God.watch do |w|
+
+    w.env = { 'RAILS_ROOT' => rails_root,
+              'RAILS_ENV'  => rails_env }
+
+    w.uid           = "rails"
+    w.name          = "resque-web"
+    w.interval      = 30.seconds
+    w.start         = "cd #{rails_root} && resque-web config/resque-web.rb"
+
+    w.start_grace   = 15.seconds
+
+    w.start_if do |start|
+      start.condition(:process_running) do |c|
+          c.interval = 5.seconds
+          c.running = false
+      end
+    end
+  end
+end
+
