@@ -12,11 +12,11 @@
           %label.label.ticket Twitter
         %td
           - if current_user.linked_to_twitter?
-            = link_to "Lier à nouveau", [:twitter_link, :dashboard, :profile], :method => :post
+            = link_to "Lier à nouveau", [:twitter_link, :dashboard, :profile], :method => :post, :"data-ajax" => false
             |
-            = link_to "Supprimer le lien", [:destroy_twitter_link, :dashboard, :profile], :method => :delete, :confirm => "Voulez-vous vraiment supprimer le lien vers Twitter ? Vous pourrez autoriser à nouveau l'application plus tard si vous le souhaitez..."
+            = link_to "Supprimer le lien", [:destroy_twitter_link, :dashboard, :profile], :method => :delete, :"data-ajax" => false, :confirm => "Voulez-vous vraiment supprimer le lien vers Twitter ? Vous pourrez autoriser à nouveau l'application plus tard si vous le souhaitez..."
           - else
-            = link_to "Lier", [:twitter_link, :dashboard, :profile], :method => :post
+            = link_to "Lier", [:twitter_link, :dashboard, :profile], :method => :post, :"data-ajax" => false
           
       %tr{ table_tr_attrs(1) }
         %td
