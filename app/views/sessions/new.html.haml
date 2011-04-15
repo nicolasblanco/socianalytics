@@ -1,7 +1,7 @@
 = form_for User.new, :url => user_session_path, :html => { "data-ajax" => false } do |f|
   %div(data-role="fieldcontain")
     = f.label :email
-    = f.text_field :email
+    = f.email_field :email
   %div(data-role="fieldcontain")
     = f.label :password
     = f.password_field :password
