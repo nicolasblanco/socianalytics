@@ -1,3 +1,7 @@
+- content_for :footer do
+  = link_to "Déconnexion", [:destroy, :user_session], "data-role" => "button", "data-icon" => "back", "data-ajax" => false
+  = link_to "Mon profile", [:dashboard, :profile],    "data-role" => "button", "data-icon" => "info", "data-ajax" => false
+  
 %ul(data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b")
   %li(data-role="list-divider") Tableau de bord
 
@@ -7,3 +11,4 @@
   %li= link_to "Amis", [:friends, :dashboard, :stats]
   %li= link_to "No-following followers", [:no_following_followers, :dashboard, :stats]
   %li= link_to "Followers spam", [:spam_followers, :dashboard, :stats]
+  

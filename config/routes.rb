@@ -88,7 +88,7 @@ Socianalytics::Application.routes.draw do
     end
     resource :profile do
       member do
-        post :twitter_link
+        get :twitter_link
         delete :destroy_twitter_link
         get :twitter_callback
         
