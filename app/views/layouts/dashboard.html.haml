@@ -17,7 +17,7 @@
       %div(data-role="header")
         %h1 Socianalytics Dashboard
         - unless current_page?(:controller => "dashboard/home", :action => "show")
-          = link_to "Home", dashboard_root_path, "data-icon" => "home", "data-iconpos" => "notext", "data-direction" => "reverse", :class => "ui-btn-right"
+          = link_to "Home", dashboard_root_path, "data-icon" => "home", "data-iconpos" => "notext", "data-direction" => "reverse", "data-ajax" => false, :class => "ui-btn-right"
       %div(data-role="content")
         = yield
       
