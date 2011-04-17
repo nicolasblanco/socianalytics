@@ -1,5 +1,8 @@
 - page_title "Popular followers"
 
+- content_for :footer do
+  = pagination_buttons(@followers)
+  
 %ul(data-role="listview" data-inset="true")
   %li(data-role="list-divider") Followers populaires
   
@@ -10,5 +13,3 @@
         %h3= follower.twitter_screen_name
         %p= follower.twitter_latest_tweet_text
         %span{ :class => "ui-li-count" }= follower.twitter_followers_count
-
-= will_paginate @followers
