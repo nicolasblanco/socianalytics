@@ -37,7 +37,7 @@ group :development, :test do
   gem "rspec-rails", "~> 2.0"
   gem "factory_girl_rails"
   gem "shoulda"
-  gem "ruby-debug19"
+  gem "ruby-debug19", :require => "ruby-debug"
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails'

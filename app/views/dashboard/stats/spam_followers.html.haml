@@ -1,5 +1,8 @@
 - page_title "Spam followers"
 
+- content_for :footer do
+  = pagination_buttons(@followers)
+
 = form_tag batch_create_dashboard_blocks_path, :method => :post do
   %ul(data-role="listview" data-inset="true")
     %li(data-role="list-divider") Followers populaires
