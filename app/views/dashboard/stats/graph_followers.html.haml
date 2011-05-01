@@ -1,0 +1,82 @@
+- page_title "Tableau de bord - Graphiques"
+
+.page-content
+  
+  #container-followers.highcharts-container{:style => "height:410px; width: 70%; margin: 0 auto; clear:both"}
+
+:javascript
+  var chart_followers;
+
+  $(document).ready(function() {
+     chart_followers = new Highcharts.Chart({
+        chart: {
+           renderTo: 'container-followers',
+           defaultSeriesType: 'line',
+           zoomType: 'x',
+           marginRight: 130,
+           marginBottom: 25
+        },
+        title: {
+           text: 'Followers',
+           x: -20 //center
+        },
+        subtitle: {
+           text: 'Account : #{current_twitter_user.twitter_screen_name}',
+           x: -20
+        },
+        xAxis: {
+           categories: #{js_array(@stats.map { |s| I18n.l(s.updated_at) }, :strings => true)}
+        },
+        yAxis: {
+           allowDecimals: false,
+           min: 0,
+           title: {
+              text: 'Nombre'
+           },
+           plotLines: [{
+              value: 0,
+              width: 1,
+              color: '#808080'
+           }]
+        },
+        tooltip: {
+           formatter: function() {
+                     return '<b>'+ this.series.name +'</b><br/>'+
+                 this.x +': '+ this.y;
+           }
+        },
+        legend: {
+           layout: 'vertical',
+           align: 'right',
+           verticalAlign: 'top',
+           x: -10,
+           y: 100,
+           borderWidth: 0
+        },
+        plotOptions: {
+          line: {
+            lineWidth: 1,
+            marker: {
+              enabled: false,
+              states: {
+                hover: {
+                  enabled: true,
+                  radius: 5
+                }
+              }
+            },
+            shadow: false,
+            states: {
+              hover: {
+                lineWidth: 1
+              }
+            }
+          }
+        },
+        series: [{
+           name: 'Followers',
+           data: #{js_array(@stats.map(&:value))}
+        }
+        ]
+     });
+  });

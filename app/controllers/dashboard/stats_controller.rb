@@ -11,8 +11,8 @@ class Dashboard::StatsController < Dashboard::DashboardController
   end
   
   public
-  def basic
-    
+  def graph_followers
+    @stats = current_twitter_user.stats(:latest_24, :twitter_followers_count)
   end
   
   def update_twitter_user
