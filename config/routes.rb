@@ -78,7 +78,7 @@ Socianalytics::Application.routes.draw do
 
     resources :stats do
       collection do
-        get :basic
+        get :graph_followers
         post :update_twitter_user
         get :popular_followers
         get :spam_followers

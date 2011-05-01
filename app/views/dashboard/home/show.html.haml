@@ -6,7 +6,7 @@
   %li(data-role="list-divider") Tableau de bord
 
   %li= link_to "Raccourcisseur d'adresses", [:dashboard, :short_urls], :"data-ajax" => false
-  %li= link_to "Graphiques", [:basic, :dashboard, :stats]
+  %li= link_to "Graphique followers", [:graph_followers, :dashboard, :stats]
   %li= link_to "Followers populaires", [:popular_followers, :dashboard, :stats]
   %li= link_to "Amis", [:friends, :dashboard, :stats]
   %li= link_to "No-following followers", [:no_following_followers, :dashboard, :stats]

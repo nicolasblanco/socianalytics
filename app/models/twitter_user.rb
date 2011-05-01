@@ -39,11 +39,20 @@ class TwitterUser
     Resque.enqueue(TwitterUserJob, user.id, twitter_id)
   end
   
-  def stat_mash(attribute)
+  def stats_mash(attribute)
     Hashie::Mash.new(:updated_at => updated_at, :value => send(attribute))
   end
   
-  def stat_for(attribute)
-    versions.map { |v| v.stat_mash(attribute) }.push(stat_mash(attribute))
+  def stats(type, attribute)
+    elements = case type
+    when :latest_24
+      versions.where(:created_at.gt => 1.day.ago)
+    when :latest_week
+      versions.where(:created_at.gt => 1.week.ago).group_by { |v| v.created_at.to_date }.values.map(&:last)
+    when :latest_month
+      versions.where(:created_at.gt => 1.month.ago).group_by { |v| v.created_at.to_date }.values.map(&:last)
+    end
+    
+    elements.map { |v| v.stats_mash(attribute) }.push(stats_mash(attribute))
   end
 end
