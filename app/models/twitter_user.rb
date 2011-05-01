@@ -45,14 +45,14 @@ class TwitterUser
   
   def stats(type, attribute)
     elements = case type
-    when :latest_24
-      versions.where(:created_at.gt => 1.day.ago)
     when :latest_week
-      versions.where(:created_at.gt => 1.week.ago).group_by { |v| v.created_at.to_date }.values.map(&:last)
+      versions.where(:updated_at.gt => 1.week.ago).group_by { |v| v.updated_at.to_date }.values.map(&:last)
     when :latest_month
-      versions.where(:created_at.gt => 1.month.ago).group_by { |v| v.created_at.to_date }.values.map(&:last)
+      versions.where(:updated_at.gt => 1.month.ago).group_by { |v| v.updated_at.to_date }.values.map(&:last)
+    else
+      versions.where(:updated_at.gt => 1.day.ago)
     end
     
-    elements.map { |v| v.stats_mash(attribute) }.push(stats_mash(attribute))
+    elements.map { |v| v.stats_mash(attribute) }
   end
 end

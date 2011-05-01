@@ -1,3 +1,15 @@
+:javascript
+  $(document).ready(function() {
+    $("#display-select").change(function() {
+      $("#display-form").submit();
+    });
+  });
+
+- content_for(:footer) do
+  = form_tag graph_followers_dashboard_stats_path, :method => :get, :id => "display-form", "data-ajax" => false do
+    = label_tag :display, "Afficher"
+    = select_tag :display, options_for_select([["24 dernières heures", "latest_24"], ["Dernière semaine", "latest_week"], ["Dernier mois", "latest_month"]], params[:display]), :id => "display-select"
+
 - page_title "Tableau de bord - Graphiques"
 
 .page-content
