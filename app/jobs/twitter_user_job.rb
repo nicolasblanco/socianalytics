@@ -23,5 +23,8 @@ class TwitterUserJob
     
     twitter_user.set_updated_at # So that we're sure that a new version will be created even if the record is unchanged.
     twitter_user.save
+
+    Statistic::Twitter::FollowerCount.update_for(twitter_user)
+    Statistic::Twitter::FollowingCount.update_for(twitter_user)
   end
 end
