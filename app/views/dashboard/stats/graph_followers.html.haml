@@ -37,7 +37,7 @@
            x: -20
         },
         xAxis: {
-           categories: #{js_array(@stats.map { |s| I18n.l(s.updated_at) }, :strings => true)}
+           categories: #{js_array(@stats.map { |s| I18n.l(s["at"]) }, :strings => true)}
         },
         yAxis: {
            allowDecimals: false,
@@ -87,7 +87,7 @@
         },
         series: [{
            name: 'Followers',
-           data: #{js_array(@stats.map(&:value))}
+           data: #{js_array(@stats.map { |s| s["value"] })}
         }
         ]
      });
