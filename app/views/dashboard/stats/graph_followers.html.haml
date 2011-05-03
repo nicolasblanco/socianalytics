@@ -37,7 +37,11 @@
            x: -20
         },
         xAxis: {
-           categories: #{js_array(@stats.map { |s| I18n.l(s["at"]) }, :strings => true)}
+           categories: #{js_array(@stats.map { |s| I18n.l(s["at"]) }, :strings => true)},
+           labels: {
+              rotation: -45,
+              align: 'right'
+            }
         },
         yAxis: {
            allowDecimals: false,
