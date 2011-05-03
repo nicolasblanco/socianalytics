@@ -14,6 +14,25 @@ class Dashboard::StatsController < Dashboard::DashboardController
   def graph_followers
     params[:display] ||= "latest_24"
     @stats = Statistic::Twitter::FollowerCount.for_twitter_user(current_twitter_user, params[:display].to_sym)
+    @graph_title = "Followers"
+
+    render "graph"
+  end
+
+  def graph_followings
+    params[:display] ||= "latest_24"
+    @stats = Statistic::Twitter::FollowingCount.for_twitter_user(current_twitter_user, params[:display].to_sym)
+    @graph_title = "Followings"
+
+    render "graph"
+  end
+
+  def graph_friends
+    params[:display] ||= "latest_24"
+    @stats = Statistic::Twitter::FriendCount.for_twitter_user(current_twitter_user, params[:display].to_sym)
+    @graph_title = "Friends"
+
+    render "graph"
   end
   
   def update_twitter_user

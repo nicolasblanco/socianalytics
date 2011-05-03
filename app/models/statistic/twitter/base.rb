@@ -10,7 +10,7 @@ class Statistic::Twitter::Base < Statistic::Base
 	end
 
 	def self.for_twitter_user(twitter_user, filter = :latest_24)
-		return unless stat = stat_for_twitter_user(twitter_user)
+		return [] unless stat = stat_for_twitter_user(twitter_user)
 		filtered_stats = stat.content.select do |stat|
 			case filter
 			when :latest_week  then stat["at"] > 1.week.ago
