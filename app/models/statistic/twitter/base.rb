@@ -11,13 +11,19 @@ class Statistic::Twitter::Base < Statistic::Base
 
 	def self.for_twitter_user(twitter_user, filter = :latest_24)
 		return unless stat = stat_for_twitter_user(twitter_user)
-		stat.content.select do |stat|
+		filtered_stats = stat.content.select do |stat|
 			case filter
 			when :latest_week  then stat["at"] > 1.week.ago
 			when :latest_month then stat["at"] > 1.month.ago
 			else
 				stat["at"] > 1.day.ago
 			end
+		end
+
+		case filter
+		when :latest_week, :latest_month then filtered_stats.group_by { |stat| stat["at"].to_date }.values.map(&:last)
+		else
+			filtered_stats
 		end
 	end
 end
