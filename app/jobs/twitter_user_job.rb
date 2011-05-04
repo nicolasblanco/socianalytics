@@ -3,7 +3,7 @@
 class TwitterUserJob
   extend Resque::Plugins::Restriction
   
-  @queue = :medium
+  @queue = :high
   restrict :per_hour => 300, :concurrent => 1
   
   def self.restriction_identifier(user_id, twitter_id, additional_data)
@@ -23,5 +23,10 @@ class TwitterUserJob
     
     twitter_user.set_updated_at # So that we're sure that a new version will be created even if the record is unchanged.
     twitter_user.save
+
+    Statistic::Twitter::FollowerCount.update_for(twitter_user)
+    Statistic::Twitter::FollowingCount.update_for(twitter_user)
+    Statistic::Twitter::FriendCount.update_for(twitter_user)
   end
 end
+

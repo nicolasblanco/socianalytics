@@ -4,6 +4,11 @@ module ApplicationHelper
   def js_array(array, options = {})
     options[:strings].present? ? "['#{array.join('\',\'')}']" : "[#{array.join(', ')}]"
   end
+
+  def pagination_buttons(collection)
+    link_to("Précédent", collection.previous_page ? params.merge(:page => collection.previous_page) : "#", "data-role" => "button", "data-icon" => "arrow-l") +
+    link_to("Suivant", collection.next_page ? params.merge(:page => collection.next_page) : "#",   "data-role" => "button", "data-icon" => "arrow-r")
+  end
   
   # Pluralize helper for French language.
   #

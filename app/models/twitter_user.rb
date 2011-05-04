@@ -1,6 +1,5 @@
 class TwitterUser
   include Mongoid::Document
-  include Mongoid::Versioning
   include Mongoid::Timestamps
   
   @@twitter_fields = %w(location profile_image_url screen_name friends_count followers_count)
@@ -16,6 +15,9 @@ class TwitterUser
   @@twitter_latest_tweet_fields.each { |f| field :"twitter_latest_tweet_#{f}" }
 
   index :twitter_followers_count
+  index :twitter_id
+
+  references_many :stats, :class_name => "TwitterStat"
   
   def raw=(twitter_response)
     twitter_fields.each { |tf| send("twitter_#{tf}=", twitter_response.send(tf)) if twitter_response.include?(tf) }
@@ -37,13 +39,5 @@ class TwitterUser
   
   def async_update!(user)
     Resque.enqueue(TwitterUserJob, user.id, twitter_id)
-  end
-  
-  def stat_mash(attribute)
-    Hashie::Mash.new(:updated_at => updated_at, :value => send(attribute))
-  end
-  
-  def stat_for(attribute)
-    versions.map { |v| v.stat_mash(attribute) }.push(stat_mash(attribute))
   end
 end
