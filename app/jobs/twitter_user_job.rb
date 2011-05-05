@@ -26,5 +26,7 @@ class TwitterUserJob
 
     Statistic::Twitter::FollowerCount.update_for(twitter_user)
     Statistic::Twitter::FollowingCount.update_for(twitter_user)
+    Statistic::Twitter::FriendCount.update_for(twitter_user)
   end
 end
+
