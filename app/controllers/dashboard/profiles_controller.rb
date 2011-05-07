@@ -25,7 +25,8 @@ class Dashboard::ProfilesController < Dashboard::DashboardController
     current_user.twitter_main_id = current_user.twitter_client.user.id
     current_user.save
     
-    redirect_to [:dashboard, :profile], :notice => "Lien vers compte Twitter créé avec succès !"
+    Resque.enqueue(TwitterUserJob, current_user.id, current_user.twitter_main_id, true)
+    redirect_to [:dashboard, :profile], :notice => "Lien vers compte Twitter créé avec succès ! Votre compte Twitter sera analysé dans quelques instants..."
   end
   
   def destroy_twitter_link
