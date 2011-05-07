@@ -19,6 +19,14 @@
         - unless current_page?(:controller => "dashboard/home", :action => "show")
           = link_to "Home", dashboard_root_path, "data-icon" => "home", "data-iconpos" => "notext", "data-ajax" => false, :class => "ui-btn-left"
       %div(data-role="content")
+        - if flash[:notice]
+          %ul(data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a")
+            %li(data-role="list-divider" style="color: green;") Information
+            %li= flash[:notice]
+        - if flash[:error]
+          %ul(data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a")
+            %li(data-role="list-divider" style="color: red;") Erreur
+            %li= flash[:error]
         = yield
       
       - if content_for?(:footer)
