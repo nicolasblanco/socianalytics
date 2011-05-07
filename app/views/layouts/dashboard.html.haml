@@ -8,7 +8,7 @@
     %script(type="text/javascript" src="http://code.jquery.com/jquery-1.5.min.js")
     %script(type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js")
     = javascript_include_tag "rails"
-    = javascript_include_tag "highcharts", "highcharts-themes/gray"
+    = javascript_include_tag "highcharts"
     
     = csrf_meta_tag
 
@@ -17,7 +17,7 @@
       %div(data-role="header")
         %h1 Socianalytics Dashboard
         - unless current_page?(:controller => "dashboard/home", :action => "show")
-          = link_to "Home", dashboard_root_path, "data-icon" => "home", "data-iconpos" => "notext", "data-direction" => "reverse", "data-ajax" => false, :class => "ui-btn-right"
+          = link_to "Home", dashboard_root_path, "data-icon" => "home", "data-iconpos" => "notext", "data-ajax" => false, :class => "ui-btn-left"
       %div(data-role="content")
         = yield
       

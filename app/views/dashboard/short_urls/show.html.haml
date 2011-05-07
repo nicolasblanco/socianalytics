@@ -1,5 +1,6 @@
 - content_for :footer do
   %a(href="#twitter-dialog" data-role="button" data-icon="star" data-inline="true" data-transition="pop") Twitter
+  = link_to "Live!", live_dashboard_short_url_path(@short_url), "data-role" => "button", "data-inline" => true, "data-ajax" => false
 
 - content_for :other_pages do
   #twitter-dialog(data-role="page")
